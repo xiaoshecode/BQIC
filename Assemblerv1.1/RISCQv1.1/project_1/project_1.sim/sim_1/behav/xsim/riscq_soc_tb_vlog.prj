@@ -1,0 +1,16 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../ip_repos/clk_wiz_0" \
+"../../../../../ip_repos/riscq_ram/sim/riscq_ram.v" \
+"../../../../../ip_repos/riscq_rom/sim/riscq_rom.v" \
+"../../../../../src/hdl/data_ram.v" \
+"../../../../../src/hdl/inst_rom.v" \
+"../../../../../src/hdl/riscq.v" \
+"../../../../../src/hdl/riscq_soc.v" \
+"../../../../../src/hdl/user_regs.v" \
+"../../../../../src/sim/riscq_soc_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

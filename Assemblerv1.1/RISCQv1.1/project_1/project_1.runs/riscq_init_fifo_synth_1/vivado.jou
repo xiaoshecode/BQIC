@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Nov 19 20:24:21 2024
+# Process ID: 23476
+# Current directory: F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.runs/riscq_init_fifo_synth_1
+# Command line: vivado.exe -log riscq_init_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source riscq_init_fifo.tcl
+# Log file: F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.runs/riscq_init_fifo_synth_1/riscq_init_fifo.vds
+# Journal file: F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.runs/riscq_init_fifo_synth_1\vivado.jou
+#-----------------------------------------------------------
+source riscq_init_fifo.tcl -notrace

@@ -1,0 +1,421 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu Nov 14 10:12:02 2024
+# Process ID: 4880
+# Current directory: F:/qbit/qubit_1.0/RISCQ/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14876 F:\qbit\qubit_1.0\RISCQ\project_1\project_1.xpr
+# Log file: F:/qbit/qubit_1.0/RISCQ/project_1/vivado.log
+# Journal file: F:/qbit/qubit_1.0/RISCQ/project_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project F:/qbit/qubit_1.0/RISCQ/project_1/project_1.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+launch_simulation
+source riscq_tb.tcl
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_inst_rom/MEM}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_inst_rom/o_idata}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_pc}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_nxpc2}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/i_clk}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/i_rst}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_gen_regs}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/i_ddata}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/i_idata}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_xmcc}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_mcc}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_dptr}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_xuimm}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_xsimm}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_rmdata}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_xres}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/i_hlt}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_lcc}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_auipc}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_jalr}} {{/riscq_tb/u_riscq/w_jal}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_pcsimm}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_lui}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_simm}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_rcc}} 
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_mcc}} 
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/w_ldata}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_xres}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/r_flush}} 
+relaunch_sim
+add_files -norecurse F:/qbit/qubit_1.0/RISCQ/src/hdl/darkriscv.v
+update_compile_order -fileset sources_1
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_darkriscv}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq}} 
+relaunch_sim
+run 1 ms
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run 1 ms
+close [ open F:/qbit/qubit_1.0/RISCQ/src/hdl/data_ram.v w ]
+add_files F:/qbit/qubit_1.0/RISCQ/src/hdl/data_ram.v
+update_compile_order -fileset sources_1
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_riscq/i_ddata}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/riscq_tb/u_data_ram}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run 1 ms
+relaunch_sim
+relaunch_sim
+relaunch_sim
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name riscq_rom -dir F:/qbit/qubit_1.0/RISCQ/ip_repos
+set_property -dict [list CONFIG.Component_Name {riscq_rom} CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Write_Width_A {32} CONFIG.Write_Depth_A {4096} CONFIG.Read_Width_A {32} CONFIG.Write_Width_B {32} CONFIG.Read_Width_B {32} CONFIG.Enable_B {Use_ENB_Pin} CONFIG.Register_PortA_Output_of_Memory_Primitives {false} CONFIG.Register_PortB_Output_of_Memory_Primitives {false} CONFIG.Port_A_Write_Rate {50} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Port_B_Enable_Rate {100}] [get_ips riscq_rom]
+generate_target {instantiation_template} [get_files f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_rom/riscq_rom.xci]
+generate_target all [get_files  f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_rom/riscq_rom.xci]
+catch { config_ip_cache -export [get_ips -all riscq_rom] }
+export_ip_user_files -of_objects [get_files f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_rom/riscq_rom.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_rom/riscq_rom.xci]
+launch_runs -jobs 20 riscq_rom_synth_1
+export_simulation -of_objects [get_files f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_rom/riscq_rom.xci] -directory F:/qbit/qubit_1.0/RISCQ/project_1/project_1.ip_user_files/sim_scripts -ip_user_files_dir F:/qbit/qubit_1.0/RISCQ/project_1/project_1.ip_user_files -ipstatic_source_dir F:/qbit/qubit_1.0/RISCQ/project_1/project_1.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/modelsim} {questa=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/questa} {riviera=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/riviera} {activehdl=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open F:/qbit/qubit_1.0/RISCQ/src/sim/inst_rom_tb.v w ]
+add_files -fileset sim_1 F:/qbit/qubit_1.0/RISCQ/src/sim/inst_rom_tb.v
+update_compile_order -fileset sim_1
+close_sim
+launch_simulation
+source riscq_tb.tcl
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top inst_rom_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source inst_rom_tb.tcl
+run 1 ms
+current_wave_config {Untitled 3}
+add_wave {{/inst_rom_tb/u_inst_rom}} 
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name riscq_ram -dir F:/qbit/qubit_1.0/RISCQ/ip_repos
+set_property -dict [list CONFIG.Component_Name {riscq_ram} CONFIG.Write_Width_A {32} CONFIG.Write_Depth_A {4096} CONFIG.Read_Width_A {32} CONFIG.Write_Width_B {32} CONFIG.Read_Width_B {32} CONFIG.Register_PortA_Output_of_Memory_Primitives {false}] [get_ips riscq_ram]
+generate_target {instantiation_template} [get_files f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_ram/riscq_ram.xci]
+generate_target all [get_files  f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_ram/riscq_ram.xci]
+catch { config_ip_cache -export [get_ips -all riscq_ram] }
+export_ip_user_files -of_objects [get_files f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_ram/riscq_ram.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_ram/riscq_ram.xci]
+launch_runs -jobs 20 riscq_ram_synth_1
+export_simulation -of_objects [get_files f:/qbit/qubit_1.0/RISCQ/ip_repos/riscq_ram/riscq_ram.xci] -directory F:/qbit/qubit_1.0/RISCQ/project_1/project_1.ip_user_files/sim_scripts -ip_user_files_dir F:/qbit/qubit_1.0/RISCQ/project_1/project_1.ip_user_files -ipstatic_source_dir F:/qbit/qubit_1.0/RISCQ/project_1/project_1.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/modelsim} {questa=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/questa} {riviera=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/riviera} {activehdl=F:/qbit/qubit_1.0/RISCQ/project_1/project_1.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+relaunch_sim
+run 1 ms
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open F:/qbit/qubit_1.0/RISCQ/src/hdl/data_ram_tb.v w ]
+add_files -fileset sim_1 F:/qbit/qubit_1.0/RISCQ/src/hdl/data_ram_tb.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top data_ram_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+close_sim
+launch_simulation
+source data_ram_tb.tcl
+run 1 ms
+current_wave_config {Untitled 4}
+add_wave {{/data_ram_tb/u_data_ram}} 
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+close [ open F:/qbit/qubit_1.0/RISCQ/src/hdl/user_regs.v w ]
+add_files F:/qbit/qubit_1.0/RISCQ/src/hdl/user_regs.v
+update_compile_order -fileset sources_1
+close [ open F:/qbit/qubit_1.0/RISCQ/src/hdl/riscq_soc.v w ]
+add_files F:/qbit/qubit_1.0/RISCQ/src/hdl/riscq_soc.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open F:/qbit/qubit_1.0/RISCQ/src/sim/riscq_soc_tb.v w ]
+add_files -fileset sim_1 F:/qbit/qubit_1.0/RISCQ/src/sim/riscq_soc_tb.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top riscq_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+close_sim
+launch_simulation
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top riscq_soc_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source riscq_soc_tb.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc}} 
+relaunch_sim
+run 1 ms
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_inst_rom}} 
+relaunch_sim
+relaunch_sim
+run 1 ms
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_riscq}} 
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_inst_rom}} 
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 1 ms
+relaunch_sim
+relaunch_sim
+run 1 ms
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc}} 
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_data_ram}} 
+relaunch_sim
+run 1 ms
+relaunch_sim
+run 50 us
+run 50 us
+run 50 us
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_riscq}} 
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_data_ram}} 
+relaunch_sim
+run 50 us
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc}} 
+relaunch_sim
+run 50 us
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_data_ram}} 
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_inst_rom}} 
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_inst_rom}} 
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us
+current_wave_config {Untitled 5}
+add_wave {{/riscq_soc_tb/u_riscq_soc/u_riscq}} 
+relaunch_sim
+run 50 us
+relaunch_sim
+run 50 us

@@ -1,0 +1,2 @@
+riscq_init_fifo.v,verilog,xil_defaultlib,../../../../../ip_repos/riscq_init_fifo/sim/riscq_init_fifo.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

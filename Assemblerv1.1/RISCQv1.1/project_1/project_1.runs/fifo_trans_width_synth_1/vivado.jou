@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Wed Nov 20 09:58:53 2024
+# Process ID: 26496
+# Current directory: F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.runs/fifo_trans_width_synth_1
+# Command line: vivado.exe -log fifo_trans_width.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fifo_trans_width.tcl
+# Log file: F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.runs/fifo_trans_width_synth_1/fifo_trans_width.vds
+# Journal file: F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.runs/fifo_trans_width_synth_1\vivado.jou
+#-----------------------------------------------------------
+source fifo_trans_width.tcl -notrace

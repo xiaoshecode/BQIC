@@ -1,0 +1,22 @@
+0.6
+2019.2
+Nov  6 2019
+21:57:16
+F:/qbit/qubit_1.0/RISCQ/src/hdl/darkriscv.v,1731555788,verilog,,F:/qbit/qubit_1.0/RISCQ/src/hdl/inst_rom.v,,darkriscv,,,,,,,,
+F:/qbit/qubit_1.0/RISCQ/src/hdl/data_ram_tb.v,1731657325,verilog,,,,data_ram_tb,,,,,,,,
+F:/qbit/qubit_1.0/RISCQ/src/hdl/defines.v,1731402420,verilog,,,,,,,,,,,,
+F:/qbit/qubit_1.0/RISCQ/src/hdl/riscq_init.v,1732021422,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/sim/riscq_init_tb.v,,riscq_init,,,,,,,,
+F:/qbit/qubit_1.0/RISCQ/src/sim/inst_rom_tb.v,1731578595,verilog,,,,inst_rom_tb,,,,,,,,
+F:/qbit/qubit_1.0/RISCQ/src/sim/riscq_tb.v,1731569695,verilog,,,,riscq_tb,,,,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/ip_repos/riscq_init_fifo/sim/riscq_init_fifo.v,1732019059,verilog,,F:/qbit/qubit_1.0/RISCQ/src/hdl/riscq_init.v,,riscq_init_fifo,,,,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/ip_repos/riscq_ram/sim/riscq_ram.v,1731634937,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/ip_repos/riscq_rom/sim/riscq_rom.v,,riscq_ram,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/ip_repos/riscq_rom/sim/riscq_rom.v,1731572782,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/data_ram.v,,riscq_rom,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/project_1/project_1.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/data_ram.v,1731814276,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/inst_rom.v,,data_ram,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/defines.v,1731896579,verilog,,,,,,,,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/inst_rom.v,1731832736,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/riscq.v,,inst_rom,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/riscq.v,1732017535,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/riscq_soc.v,F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/defines.v,riscq,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/riscq_soc.v,1732016926,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/user_regs.v,,riscq_soc,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/hdl/user_regs.v,1731914539,verilog,,F:/qbit/qubit_1.0/RISCQv1.1/src/sim/riscq_soc_tb.v,,user_regs,,,../../../../../ip_repos/clk_wiz_0,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/sim/riscq_init_tb.v,1732021290,verilog,,,,riscq_init_tb,,,,,,,,
+F:/qbit/qubit_1.0/RISCQv1.1/src/sim/riscq_soc_tb.v,1732073867,verilog,,,,riscq_soc_tb,,,../../../../../ip_repos/clk_wiz_0,,,,,

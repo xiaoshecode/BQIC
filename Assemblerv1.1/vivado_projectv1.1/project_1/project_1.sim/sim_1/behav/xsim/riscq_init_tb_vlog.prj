@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../ip_repos/riscq_init_fifo/sim/riscq_init_fifo.v" \
+"../../../../../../RISCQ/src/hdl/riscq_init.v" \
+"../../../../../src/sim/riscq_init_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

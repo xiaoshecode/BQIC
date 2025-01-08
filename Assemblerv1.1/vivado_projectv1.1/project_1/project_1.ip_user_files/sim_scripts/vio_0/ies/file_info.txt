@@ -1,0 +1,6 @@
+xpm_cdc.sv,systemverilog,xpm,C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv,incdir="../../../../../ip_repos/vio_0/hdl/verilog"incdir="../../../../../ip_repos/vio_0/hdl"
+xpm_fifo.sv,systemverilog,xpm,C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv,incdir="../../../../../ip_repos/vio_0/hdl/verilog"incdir="../../../../../ip_repos/vio_0/hdl"
+xpm_memory.sv,systemverilog,xpm,C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv,incdir="../../../../../ip_repos/vio_0/hdl/verilog"incdir="../../../../../ip_repos/vio_0/hdl"
+xpm_VCOMP.vhd,vhdl,xpm,C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_VCOMP.vhd,incdir="../../../../../ip_repos/vio_0/hdl/verilog"incdir="../../../../../ip_repos/vio_0/hdl"
+vio_0.v,verilog,xil_defaultlib,../../../../../ip_repos/vio_0/sim/vio_0.v,incdir="../../../../../ip_repos/vio_0/hdl/verilog"incdir="../../../../../ip_repos/vio_0/hdl"
+glbl.v,Verilog,xil_defaultlib,glbl.v

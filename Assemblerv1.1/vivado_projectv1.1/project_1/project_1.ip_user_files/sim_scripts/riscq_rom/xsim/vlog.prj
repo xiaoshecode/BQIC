@@ -1,0 +1,6 @@
+verilog xil_defaultlib  \
+"../../../../../ip_repos/riscq_rom/sim/riscq_rom.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

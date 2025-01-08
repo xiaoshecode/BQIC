@@ -85,7 +85,7 @@ def riscv_assemble_auipc(riscv_config, instr, rd, imm):
     return assemblebin_auipc
 
 
-def risv_assemble_jal(riscv_config, instr, rd, imm):
+def riscv_assemble_jal(riscv_config, instr, rd, imm):
     opcode = riscv_config["INSTRUCTION_SET"][instr]["opcode"]
     rd_bin = riscv_config["REGISTER_MAP"][rd]
     imm_bin = number2bin(imm, 21)
@@ -121,7 +121,7 @@ def riscv_assemble_luw(riscv_config, instr, rd, urs):
     opcode = riscv_config["INSTRUCTION_SET"][instr]["opcode"]
     funct3 = riscv_config["INSTRUCTION_SET"][instr]["funct3"]
     rd_bin = riscv_config["REGISTER_MAP"][rd]
-    urs_bin = riscv_config["USER_REGISTER_MAP"][urs]
+    urs_bin = riscv_config["USER_READ_REGISTER_MAP"][urs]
     assemblebin_luw = "0" + urs_bin + "0000000000000" + funct3 + rd_bin + opcode
     return assemblebin_luw
 

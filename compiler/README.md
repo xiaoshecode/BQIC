@@ -1,4 +1,4 @@
-# BQIC compiler
+# Bell compiler
 
 ## 项目说明
 这个项目结合秦治臻学长的汇编器，希望能够自底向上实现一个编译器，使用python语言控制整台设备使用。

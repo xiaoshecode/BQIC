@@ -19,16 +19,18 @@ OpfuncDevice: 初始化一个设备
 - open()
 - close()
 - reset()
-- set()
-- get()
+- write()
+- read()
+- getDeviceID()
 
 OpfuncRF: 初始化一个RF设备
 - init()
 - open()
 - close()
 - reset()
-- set() 需要重构
-- get() 需要重构
+- write() 需要重构
+- read() 需要重构
+- getDeviceID()
 
 OpfuncRF_DDS: 生成一个DDS设备，缓存自己的状态，并且通过set()发送命令
 - init()
@@ -36,8 +38,10 @@ OpfuncRF_DDS: 生成一个DDS设备，缓存自己的状态，并且通过set()�
 - close()
 - reset()
 - gen_assembler() #生成自己的命令
-- set()
-- get() # 获取频率、幅度、相位
+- write()
+- read() # 获取频率、幅度、相位
+- set_waveform() # 根据参数设置波形
+- getDeviceID()
 
 OpfuncRF_AWG: 生成一个AWG设备，缓存自己的状态，并且通过set()发送命令
 - init()
@@ -45,16 +49,17 @@ OpfuncRF_AWG: 生成一个AWG设备，缓存自己的状态，并且通过set()�
 - close()
 - reset()
 - gen_assembler() #生成自己的命令
-- set()
-- get() # 获取波形、幅度、相位
+- write()
+- read() # 获取波形、幅度、相位
 - set_waveform() # 根据参数设置波形
+- getDeviceID()
 
 OpfuncPulse: 初始化一个Pulse设备
 - init()
 - open()
 - close()
 - reset()
-- set()
-- get()
+- write()
+- read()
 - gen_assembler() #生成自己的命令
-
+- getDeviceID()

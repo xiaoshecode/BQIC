@@ -50,5 +50,16 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
         self.array_128bit.append(full_128bin)
         self.array_32bit.append(self.Delay)
 
+    def read_arrays(self):
+        return self.array_128bit, self.array_32bit
+    
+    def adjust_array_length(self):
+        while (len(self.array_128bit) % 4) !=3:
+            self.array_128bit.append(0)
+            self.array_32bit.append(0)
+
+        self.array_128bit.append(0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
+        self.array_32bit.append(0xFFFFFFFF)
+
     def getDeviceID(self):
         print("RF DDS Device ID: ", super().getDeviceID())

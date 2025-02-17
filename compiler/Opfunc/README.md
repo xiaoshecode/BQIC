@@ -68,5 +68,8 @@ OpfuncPulse: 初始化一个Pulse设备
 - reset()
 - write()
 - read()
+- setwaveform() 输入波形参数
 - gen_assembler() #生成自己的命令
+- adjust_array_length()
+- read_arrays() # 获取得到的二进制编码
 - getDeviceID()

@@ -41,7 +41,7 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
 
     def gen_assembler(self):  # 转换a/f/p信息为二进制命令
 
-        Freq_bin = int(self.Freq * 2**32 / 250)  # part1 f0 = K/2^32 * Fclk
+        Freq_bin = int(self.Freq * 2**24 / 250)  # part1 f0 = K/2^24 * Fclk
         Phase_bin = int(self.Phase * 2**24)  # part2 p0 = K/2^24,p=[0,1]
         Amp_bin = int(self.Amp * 2**16)  # part3 Amp = K/2^16
 

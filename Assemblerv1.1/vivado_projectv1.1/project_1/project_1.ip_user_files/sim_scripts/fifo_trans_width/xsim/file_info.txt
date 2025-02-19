@@ -1,2 +1,0 @@
-fifo_trans_width.v,verilog,xil_defaultlib,../../../../../ip_repos/fifo_trans_width/sim/fifo_trans_width.v,
-glbl.v,Verilog,xil_defaultlib,glbl.v

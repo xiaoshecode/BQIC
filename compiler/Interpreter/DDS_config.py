@@ -1,6 +1,7 @@
 from DDS_Seq import DDS, Seq
+
 # Pumping States
-Pumping = DDS('Pumping')
+Pumping = DDS("Pumping")
 Pumping.s0.f(100).a(0.2)
 Pumping.s1.f(220).a(0.75)
 Pumping.s2.f(110).a(0.5)
@@ -13,7 +14,7 @@ Pumping.s8.f(220).a(0)
 
 
 # Cooling States
-Cooling = DDS('Cooling')
+Cooling = DDS("Cooling")
 Cooling.s0.f(100).a(0.2)
 Cooling.s1.f(110).a(0.75)
 Cooling.s2.f(110).a(0.5)
@@ -25,7 +26,7 @@ Cooling.s7.f(220).a(0.25)
 Cooling.s8.f(220).a(0)
 
 # EITSigma States
-EITSigma = DDS('EITSigma')
+EITSigma = DDS("EITSigma")
 EITSigma.s0.f(100).a(0.2)
 EITSigma.s1.f(110).a(0.75)
 EITSigma.s2.f(110).a(0.5)
@@ -37,7 +38,7 @@ EITSigma.s7.f(220).a(0.25)
 EITSigma.s8.f(220).a(0)
 
 # EITPi States
-EITPi = DDS('EITPi')
+EITPi = DDS("EITPi")
 EITPi.s0.f(100).a(0.2)
 EITPi.s1.f(110).a(0.75)
 EITPi.s2.f(110).a(0.5)
@@ -49,7 +50,7 @@ EITPi.s7.f(220).a(0.25)
 EITPi.s8.f(220).a(0)
 
 # CoolingAxial States
-CoolingAxial = DDS('CoolingAxial')
+CoolingAxial = DDS("CoolingAxial")
 CoolingAxial.s0.f(100).a(0.2)
 CoolingAxial.s1.f(110).a(0.75)
 CoolingAxial.s2.f(110).a(0.5)
@@ -60,7 +61,7 @@ CoolingAxial.s6.f(220).a(0.5)
 CoolingAxial.s7.f(220).a(0.25)
 CoolingAxial.s8.f(220).a(0)
 
-MW = DDS('MW')
+MW = DDS("MW")
 MW.s0.f(100).a(0.2)
 MW.s1.f(110).a(0.75)
 MW.s2.f(110).a(0.5)
@@ -71,7 +72,7 @@ MW.s6.f(220).a(0.5)
 MW.s7.f(220).a(0.25)
 MW.s8.f(220).a(0)
 
-Com411 = DDS('Com411')
+Com411 = DDS("Com411")
 Com411.s0.f(100).a(0.2)
 Com411.s1.f(110).a(0.75)
 Com411.s2.f(110).a(0.5)
@@ -82,7 +83,7 @@ Com411.s6.f(220).a(0.5)
 Com411.s7.f(220).a(0.25)
 Com411.s8.f(220).a(0)
 
-Raman411 = DDS('Raman411')
+Raman411 = DDS("Raman411")
 Raman411.s0.f(100).a(0.2)
 Raman411.s1.f(110).a(0.75)
 Raman411.s2.f(110).a(0.5)
@@ -93,7 +94,7 @@ Raman411.s6.f(220).a(0.5)
 Raman411.s7.f(220).a(0.25)
 Raman411.s8.f(220).a(0)
 
-AOM411_1 = DDS('AOM411_1')
+AOM411_1 = DDS("AOM411_1")
 AOM411_1.s0.f(100).a(0.2)
 AOM411_1.s1.f(110).a(0.75)
 AOM411_1.s2.f(110).a(0.5)
@@ -104,7 +105,7 @@ AOM411_1.s6.f(220).a(0.5)
 AOM411_1.s7.f(220).a(0.25)
 AOM411_1.s8.f(220).a(0)
 
-AOM411_2 = DDS('AOM411_2')
+AOM411_2 = DDS("AOM411_2")
 AOM411_2.s0.f(100).a(0.2)
 AOM411_2.s1.f(110).a(0.75)
 AOM411_2.s2.f(110).a(0.5)
@@ -115,7 +116,7 @@ AOM411_2.s6.f(220).a(0.5)
 AOM411_2.s7.f(220).a(0.25)
 AOM411_2.s8.f(220).a(0)
 
-dds10 = DDS('dds10')
+dds10 = DDS("dds10")
 dds10.s0.f(100).a(0.2)
 dds10.s1.f(110).a(0.75)
 dds10.s2.f(110).a(0.5)
@@ -126,7 +127,7 @@ dds10.s6.f(220).a(0.5)
 dds10.s7.f(220).a(0.25)
 dds10.s8.f(220).a(0)
 
-dds11 = DDS('dds11')
+dds11 = DDS("dds11")
 dds11.s0.f(100).a(0.2)
 dds11.s1.f(110).a(0.75)
 dds11.s2.f(110).a(0.5)
@@ -137,8 +138,8 @@ dds11.s6.f(220).a(0.5)
 dds11.s7.f(220).a(0.25)
 dds11.s8.f(220).a(0)
 
-#更改一下命名
-dds12 = DDS('dds12')
+# 更改一下命名
+dds12 = DDS("dds12")
 dds12.s0.f(100).a(0.2)
 dds12.s1.f(110).a(0.75)
 dds12.s2.f(110).a(0.5)
@@ -149,7 +150,7 @@ dds12.s6.f(220).a(0.5)
 dds12.s7.f(220).a(0.25)
 dds12.s8.f(220).a(0)
 
-dds13 = DDS('dds13')
+dds13 = DDS("dds13")
 dds13.s0.f(100).a(0.2)
 dds13.s1.f(110).a(0.75)
 dds13.s2.f(110).a(0.5)
@@ -160,7 +161,7 @@ dds13.s6.f(220).a(0.5)
 dds13.s7.f(220).a(0.25)
 dds13.s8.f(220).a(0)
 
-dds14 = DDS('dds14')
+dds14 = DDS("dds14")
 dds14.s0.f(100).a(0.2)
 dds14.s1.f(110).a(0.75)
 dds14.s2.f(110).a(0.5)
@@ -171,7 +172,7 @@ dds14.s6.f(220).a(0.5)
 dds14.s7.f(220).a(0.25)
 dds14.s8.f(220).a(0)
 
-dds15 = DDS('dds15')
+dds15 = DDS("dds15")
 dds15.s0.f(100).a(0.2)
 dds15.s1.f(110).a(0.75)
 dds15.s2.f(110).a(0.5)
@@ -182,7 +183,7 @@ dds15.s6.f(220).a(0.5)
 dds15.s7.f(220).a(0.25)
 dds15.s8.f(220).a(0)
 
-dds16 = DDS('dds16')
+dds16 = DDS("dds16")
 dds16.s0.f(100).a(0.2)
 dds16.s1.f(110).a(0.75)
 dds16.s2.f(110).a(0.5)
@@ -193,7 +194,7 @@ dds16.s6.f(220).a(0.5)
 dds16.s7.f(220).a(0.25)
 dds16.s8.f(220).a(0)
 
-dds17 = DDS('dds17')
+dds17 = DDS("dds17")
 dds17.s0.f(100).a(0.2)
 dds17.s1.f(110).a(0.75)
 dds17.s2.f(110).a(0.5)
@@ -204,7 +205,7 @@ dds17.s6.f(220).a(0.5)
 dds17.s7.f(220).a(0.25)
 dds17.s8.f(220).a(0)
 
-dds18 = DDS('dds18')
+dds18 = DDS("dds18")
 dds18.s0.f(100).a(0.2)
 dds18.s1.f(110).a(0.75)
 dds18.s2.f(110).a(0.5)
@@ -215,7 +216,7 @@ dds18.s6.f(220).a(0.5)
 dds18.s7.f(220).a(0.25)
 dds18.s8.f(220).a(0)
 
-dds19 = DDS('dds19')
+dds19 = DDS("dds19")
 dds19.s0.f(100).a(0.2)
 dds19.s1.f(110).a(0.75)
 dds19.s2.f(110).a(0.5)
@@ -226,7 +227,7 @@ dds19.s6.f(220).a(0.5)
 dds19.s7.f(220).a(0.25)
 dds19.s8.f(220).a(0)
 
-dds20 = DDS('dds20')
+dds20 = DDS("dds20")
 dds20.s0.f(100).a(0.2)
 dds20.s1.f(110).a(0.75)
 dds20.s2.f(110).a(0.5)
@@ -237,7 +238,7 @@ dds20.s6.f(220).a(0.5)
 dds20.s7.f(220).a(0.25)
 dds20.s8.f(220).a(0)
 
-dds21 = DDS('dds21')
+dds21 = DDS("dds21")
 dds21.s0.f(100).a(0.2)
 dds21.s1.f(110).a(0.75)
 dds21.s2.f(110).a(0.5)
@@ -248,7 +249,7 @@ dds21.s6.f(220).a(0.5)
 dds21.s7.f(220).a(0.25)
 dds21.s8.f(220).a(0)
 
-dds22 = DDS('dds22')
+dds22 = DDS("dds22")
 dds22.s0.f(100).a(0.2)
 dds22.s1.f(110).a(0.75)
 dds22.s2.f(110).a(0.5)
@@ -259,7 +260,7 @@ dds22.s6.f(220).a(0.5)
 dds22.s7.f(220).a(0.25)
 dds22.s8.f(220).a(0)
 
-dds23 = DDS('dds23')
+dds23 = DDS("dds23")
 dds23.s0.f(100).a(0.2)
 dds23.s1.f(110).a(0.75)
 dds23.s2.f(110).a(0.5)
@@ -270,14 +271,27 @@ dds23.s6.f(220).a(0.5)
 dds23.s7.f(220).a(0.25)
 dds23.s8.f(220).a(0)
 
+
+# test define 
+dds0 = DDS("dds0")
+dds0.s0.f(100).a(0.5)
+dds1 = DDS("dds1")
+dds1.s0.f(100).a(0.5)
+dds2 = DDS("dds2")
+dds2.s0.f(100).a(0.5)
+dds3 = DDS("dds3")
+dds3.s0.f(100).a(0.5)
+
+
 # DDS locations
-DDS.List = [  'Cooling','EITSigma',  'EITPi','Pumping',
-            'CoolingAxial', 'MW', 'Com411', 'Raman411', 
-            'AOM411_1', 'AOM411_2', 'dds10', 'dds11',
-            'dds12', 'dds13', 'dds14', 'dds15',
-            'dds16', 'dds17', 'dds18', 'dds19',
-            'dds20', 'dds21', 'dds22', 'dds23'
-            ]
+# DDS.List = [  'Cooling','EITSigma',  'EITPi','Pumping',
+#             'CoolingAxial', 'MW', 'Com411', 'Raman411',
+#             'AOM411_1', 'AOM411_2', 'dds10', 'dds11',
+#             'dds12', 'dds13', 'dds14', 'dds15',
+#             'dds16', 'dds17', 'dds18', 'dds19',
+#             'dds20', 'dds21', 'dds22', 'dds23'
+#             ]
+DDS.List = ["dds0", "dds1", "dds2", "dds3"]
 
 for i in range(len(DDS.List)):
     name = DDS.List[i]
@@ -302,31 +316,31 @@ TTL_CCD = 1 << 4
 PMT1 = 1 << 24
 PMT2 = 1 << 25
 
+Pulse = 1
 
 # Seq
-Seq('S0') | Cooling.s0 | Pumping.s0 | EITSigma.s0 | EITPi.s0 | TTL_0 | 0
-Seq('S1') | Cooling.s1 | Pumping.s1 | EITSigma.s1 | EITPi.s1 | TTL_1 | 0
-Seq('S2') | Cooling.s2 | Pumping.s2 | EITSigma.s2 | EITPi.s2 | TTL_2 | 0
-Seq('S3') | Cooling.s3 | Pumping.s3 | EITSigma.s3 | EITPi.s3 | TTL_3 | 0
-Seq('S4') | Cooling.s4 | Pumping.s4 | EITSigma.s4 | EITPi.s4 | TTL_4 | 0
-Seq('S5') | Cooling.s5 | Pumping.s5 | EITSigma.s5 | EITPi.s5 | TTL_5 | 0
-Seq('S6') | Cooling.s6 | Pumping.s6 | EITSigma.s6 | EITPi.s6 | TTL_6 | 0
-Seq('S7') | Cooling.s7 | Pumping.s7 | EITSigma.s7 | EITPi.s7 | TTL_7 | 0
-Seq('S8') | Cooling.s8 | Pumping.s8 | EITSigma.s8 | EITPi.s8 | TTL_0 | 0
-Seq('S9') | CoolingAxial.s0 | MW.s0 | Com411.s0 | Raman411.s0 | TTL_0 | 0
-Seq('S10') | AOM411_1.s0 | AOM411_2.s0 | dds10.s0 | dds11.s0 | TTL_0 | 0
-Seq('S11') | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_0 | 0
-Seq('S12') | dds16.s0 | dds17.s0 | dds18.s0 | dds19.s0 | TTL_0 | 0
-Seq('S13') | dds20.s0 | dds21.s0 | dds22.s0 | dds23.s0 | TTL_0 | 0
-Seq('S14') | Cooling.s0 | Pumping.s0 | EITSigma.s0 | EITPi.s0 | \
-                CoolingAxial.s0 | MW.s0 | Com411.s0 | Raman411.s0 | \
-                    AOM411_1.s0 | AOM411_2.s0 | dds10.s0 | dds11.s0 | \
-                        dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | \
-                            dds16.s0 | dds17.s0 | dds18.s0 | dds19.s0 | \
-                                dds20.s0 | dds21.s0 | dds22.s0 | dds23.s0 | TTL_0 | 0 
+# Seq("S0") | Cooling.s0 | Pumping.s0 | EITSigma.s0 | EITPi.s0 | TTL_0 | 0
+# Seq("S1") | Cooling.s1 | Pumping.s1 | EITSigma.s1 | EITPi.s1 | TTL_1 | 0
+# Seq("S2") | Cooling.s2 | Pumping.s2 | EITSigma.s2 | EITPi.s2 | TTL_2 | 0
+# Seq("S3") | Cooling.s3 | Pumping.s3 | EITSigma.s3 | EITPi.s3 | TTL_3 | 0
+# Seq("S4") | Cooling.s4 | Pumping.s4 | EITSigma.s4 | EITPi.s4 | TTL_4 | 0
+# Seq("S5") | Cooling.s5 | Pumping.s5 | EITSigma.s5 | EITPi.s5 | TTL_5 | 0
+# Seq("S6") | Cooling.s6 | Pumping.s6 | EITSigma.s6 | EITPi.s6 | TTL_6 | 0
+# Seq("S7") | Cooling.s7 | Pumping.s7 | EITSigma.s7 | EITPi.s7 | TTL_7 | 0
+# Seq("S8") | Cooling.s8 | Pumping.s8 | EITSigma.s8 | EITPi.s8 | TTL_0 | 0
+# Seq("S9") | CoolingAxial.s0 | MW.s0 | Com411.s0 | Raman411.s0 | TTL_0 | 0
+# Seq("S10") | AOM411_1.s0 | AOM411_2.s0 | dds10.s0 | dds11.s0 | TTL_0 | 0
+# Seq("S11") | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_0 | 0
+# Seq("S12") | dds16.s0 | dds17.s0 | dds18.s0 | dds19.s0 | TTL_0 | 0
+# Seq("S13") | dds20.s0 | dds21.s0 | dds22.s0 | dds23.s0 | TTL_0 | 0
+# Seq(
+#     "S14"
+# ) | Cooling.s0 | Pumping.s0 | EITSigma.s0 | EITPi.s0 | CoolingAxial.s0 | MW.s0 | Com411.s0 | Raman411.s0 | AOM411_1.s0 | AOM411_2.s0 | dds10.s0 | dds11.s0 | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | dds16.s0 | dds17.s0 | dds18.s0 | dds19.s0 | dds20.s0 | dds21.s0 | dds22.s0 | dds23.s0 | TTL_0 | 0
 
-with Seq('Detection'):
+with Seq("Detection"):
     Cooling.off | PMT2 | 0
     Cooling.off | TTL_0 | 0
 
-Seq('Protect') | Cooling.s8 | Pumping.s8 | EITPi.s8 | EITSigma.s8 | 0
+Seq("Protect") | Cooling.s8 | Pumping.s8 | EITPi.s8 | EITSigma.s8 | 0
+
+Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | Pulse | 0

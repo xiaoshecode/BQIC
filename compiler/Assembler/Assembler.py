@@ -1,4 +1,4 @@
-import utils4assemble as utils4assemble
+import compiler.Assembler.utils4assemble as utils4assemble
 
 
 def riscv_assemble_insts(insts, riscv_config_path):

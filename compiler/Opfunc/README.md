@@ -41,6 +41,8 @@ OpfuncRF_DDS: 生成一个DDS设备，缓存自己的状态，并且通过set()�
 - write()
 - read() # 获取频率、幅度、相位
 - set_waveform() # 根据参数设置波形
+- read_arrays() # 获取得到的二进制编码
+- adjust_array_length() # 调整二进制编码的长度
 - getDeviceID()
 
 OpfuncRF_AWG: 生成一个AWG设备，缓存自己的状态，并且通过set()发送命令
@@ -48,10 +50,15 @@ OpfuncRF_AWG: 生成一个AWG设备，缓存自己的状态，并且通过set()�
 - open()
 - close()
 - reset()
+- gen_assembler_AMP() #生成Amp控制命令
+- gen_assembler_PHASE() #生成PHASE控制命令
+- gen_assembler_FREQ() #生成FREQ控制命令
 - gen_assembler() #生成自己的命令
 - write()
 - read() # 获取波形、幅度、相位
 - set_waveform() # 根据参数设置波形
+- read_arrays() # 获取得到的二进制编码
+- adjust_array_length() # 调整二进制编码的长度
 - getDeviceID()
 
 OpfuncPulse: 初始化一个Pulse设备
@@ -61,5 +68,8 @@ OpfuncPulse: 初始化一个Pulse设备
 - reset()
 - write()
 - read()
+- setwaveform() 输入波形参数
 - gen_assembler() #生成自己的命令
+- adjust_array_length()
+- read_arrays() # 获取得到的二进制编码
 - getDeviceID()

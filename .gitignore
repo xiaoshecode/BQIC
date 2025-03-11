@@ -1,1 +1,6 @@
 /.vscode
+compiler/__pycache__
+compiler/*.hex
+compiler/*.s
+compiler/*.mem
+Assemblerv1.1/vivado_projectv1.1

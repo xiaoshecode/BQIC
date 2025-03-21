@@ -19,4 +19,4 @@ result = builder.fadd(a, b, name="res")
 builder.ret(result)
 
 # Print the module IR
-# print(module)
+print(module)

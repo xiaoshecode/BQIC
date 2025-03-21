@@ -64,3 +64,14 @@ func_ptr = engine.get_function_address("fpadd")
 cfunc = CFUNCTYPE(c_double, c_double, c_double)(func_ptr)
 res = cfunc(1.0, 3.5)
 print("fpadd(1.0, 3.5) =", res)
+
+# @kernel
+# def run():
+#     if cont == 1: #jump
+#         seq1
+#     else:
+#         seq2
+#     for(i, 1000): #scan
+#         j =+1
+#         seq3 = dds(i,t1,j).dds2(t2).dds3(t).dds4(t)
+#     #function 

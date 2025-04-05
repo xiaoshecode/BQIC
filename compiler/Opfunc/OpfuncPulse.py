@@ -57,4 +57,4 @@ class OpfuncPulse(OpfuncDevice):
         return self.array_16bit, self.array_32bit
 
     def getDeviceID(self):
-        print("Pulse Device ID:", super().getDeviceID())
+        return self.DeviceID

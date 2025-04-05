@@ -19,6 +19,7 @@ class OpfuncDevice:
 
     def getDeviceID(self):
         return self.DeviceID
+        # pass
 
 
 class OpfuncRF(OpfuncDevice):
@@ -38,8 +39,10 @@ class OpfuncRF(OpfuncDevice):
         super().read()
 
     def write(self):
-        return super().write()
+        # return super().write()
+        pass
 
     def getDeviceID(self):
-        print("RF Device ID: ", super().getDeviceID())
+        # print("RF Device ID: ", super().getDeviceID())
+        pass
 

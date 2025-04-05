@@ -317,7 +317,8 @@ PMT1 = 1 << 24
 PMT2 = 1 << 25
 
 Pulse = 1
-
+PMT = 2
+TTL_1 = 3
 # Seq
 # Seq("S0") | Cooling.s0 | Pumping.s0 | EITSigma.s0 | EITPi.s0 | TTL_0 | 0
 # Seq("S1") | Cooling.s1 | Pumping.s1 | EITSigma.s1 | EITPi.s1 | TTL_1 | 0
@@ -343,4 +344,5 @@ with Seq("Detection"):
 
 Seq("Protect") | Cooling.s8 | Pumping.s8 | EITPi.s8 | EITSigma.s8 | 0
 
-Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | Pulse | 0
+Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | PMT  | 0
+Seq("S1") | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1  | 0

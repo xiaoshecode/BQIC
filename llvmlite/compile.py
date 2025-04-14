@@ -1,5 +1,10 @@
 from __future__ import print_function
 from ctypes import CFUNCTYPE, c_double
+import io
+import os
+import binascii
+from elftools.elf.elffile import ELFFile
+from elftools.elf.sections import SymbolTableSection
 # import llvmlite.binding as llvm
 import llvmlite.binding as binding
 from llvmlite import ir
@@ -136,9 +141,6 @@ if __name__ == '__main__':
     # print("\nRISCV32 Machine code:")
     machine_code = riscv_machine.emit_object(llvm_module)
 
-    save_path = "test.o"
-    with open(save_path, "wb") as f:
-        f.write(machine_code)
-    print("Save machine code to", save_path)
+    # 读取elf文件，提取其中指令
 
     # from elftools.elf.elffile import ELFFile

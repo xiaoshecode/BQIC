@@ -1,4 +1,4 @@
-from OpfuncDevice import OpfuncRF
+from compiler.Opfunc.OpfuncRF import OpfuncRF
 
 
 class OpfuncAWG(OpfuncRF):  # 这里针对Bell设备的AWG完成Amp、phase、freq参数控制子类

@@ -1,5 +1,10 @@
-from OpfuncDevice import OpfuncRF
+import sys
+import os
+# 获取当前脚本所在目录的父目录的父目录
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(base_path)
 
+from compiler.Opfunc.OpfuncDevice import OpfuncRF
 # TODO: DDS 处理参数中多了delay这项
 class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
     def __init__(self, DeviceID):
@@ -10,7 +15,7 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
         self.Phase = 0  # 24bit
         self.Delay = 0  # 32bit
         self.array_128bit = []  # 128 bit array
-        self.array_32bit = []  # 32 bit array
+        self.array_32bit = []  # 32 bit array #TODO 现在不需要这个数组了，后续可以删除
 
     # 保留父类的方法，待后续扩展
     # def open(self):
@@ -20,7 +25,12 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
     #     super().close()
 
     def reset(self):
-        super().reset()
+        self.array_128bit = []
+        self.array_32bit = []
+        self.Freq = 0
+        self.Amp = 0
+        self.Phase = 0
+        self.Delay = 0
 
     def read_state(self): # 读取当前状态 #TODO 设置查询参数的状态
         # super().read()
@@ -50,22 +60,39 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
         Freq_bin = int(self.Freq * 2**32 / 250)  # part1 f0 = K/2^32 * Fclk
         Phase_bin = int(self.Phase * 2**32)  # part2 p0 = K/2^32,p=[0,1]
         Amp_bin = int(self.Amp * 2**16)  # part3 Amp = K/2^16
-        Delay_bin = int(self.Delay)
-        full_128bin = (int(Delay_bin)<<96) | (int(Freq_bin) << 64) | (int(Phase_bin)<< 32) | int(Amp_bin) 
+        Delay_bin = int(self.Delay/4*1000) # 换算成时钟周期4ns 单位us
+        full_128 = (int(Delay_bin)<<96) | (int(Freq_bin) << 64) | (int(Phase_bin)<< 32) | int(Amp_bin) 
+        # full_128 是一个十进制数，将其转换为16进制数并补齐32位
+        full_128hex = full_128.to_bytes(16, byteorder='big')
+        
 
-        self.array_128bit.append(full_128bin)
-        self.array_32bit.append(self.Delay)
+        self.array_128bit.append(full_128hex)
 
     def read_arrays(self):
-        return self.array_128bit, self.array_32bit
+        return self.array_128bit
     
     def adjust_array_length(self):
-        while (len(self.array_128bit) % 4) !=3:
-            self.array_128bit.append(0)
-            self.array_32bit.append(0)
-
-        self.array_128bit.append(0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
-        self.array_32bit.append(0xFFFFFFFF)
+        # 0xFF_FF_FF_FF
+        #   FF_FF_FF_FF
+        #   FF_FF_FF_FF
+        #   FF_FF_FF_FF
+        self.array_128bit.append(b'\xFF'*16)
+        # self.array_32bit.append(b'\xFF'*4)
 
     def getDeviceID(self):
         return self.DeviceID
+
+    def output2file(self, filename = "OpfuncRF_DDS.txt"):
+        # 将128bit数组按照16进制写入txt文件
+        with open(filename, 'a') as f:
+            for item in self.array_128bit:
+                hex_string = ''.join(format(x, '02x') for x in item)
+                f.write(hex_string + '\n')
+    
+if __name__ == "__main__":
+    DDS = OpfuncRF_DDS(DeviceID=0)
+    DDS.setwaveform(Freq=100, Amp=0.5, Phase=0.5, Delay=100)
+    DDS.gen_assembler()
+    DDS.adjust_array_length()
+    DDS.output2file()
+    print(DDS.read_arrays())

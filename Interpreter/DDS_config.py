@@ -272,15 +272,15 @@ dds23.s7.f(220).a(0.25)
 dds23.s8.f(220).a(0)
 
 
-# test define 
+# test define
 dds0 = DDS("dds0")
 dds0.s0.f(100).a(0.5)
 dds1 = DDS("dds1")
-dds1.s0.f(100).a(0.5)
+dds1.s0.f(110).a(0.6)
 dds2 = DDS("dds2")
-dds2.s0.f(100).a(0.5)
+dds2.s0.f(120).a(0.7)
 dds3 = DDS("dds3")
-dds3.s0.f(100).a(0.5)
+dds3.s0.f(130).a(0.8)
 
 
 # DDS locations
@@ -344,5 +344,5 @@ with Seq("Detection"):
 
 Seq("Protect") | Cooling.s8 | Pumping.s8 | EITPi.s8 | EITSigma.s8 | 0
 
-Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | PMT  | 0
-Seq("S1") | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1  | 0
+Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | PMT | 0
+Seq("S1") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1 | 0

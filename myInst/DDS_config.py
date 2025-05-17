@@ -11,7 +11,7 @@ Pumping.s5.f(110).a(0.75)
 Pumping.s6.f(220).a(0.5)
 Pumping.s7.f(220).a(0.25)
 Pumping.s8.f(220).a(0)
-
+Pumping.on.f(120).a(0.1)
 
 # Cooling States
 Cooling = DDS("Cooling")
@@ -24,6 +24,27 @@ Cooling.s5.f(220).a(0.75)
 Cooling.s6.f(220).a(0.5)
 Cooling.s7.f(220).a(0.25)
 Cooling.s8.f(220).a(0)
+
+# Protection
+Protection = DDS("Protection")
+Protection.on.f(120).a(0.1)
+
+#Pipuming
+PiPumping = DDS("PiPumping")
+PiPumping.on.f(100).a(0.1)
+Pumping.power.f(148).a(0.1130000000000001)
+
+#AOM650
+AOM650 = DDS("AOM650")
+AOM650.on.f(130).a(0.13)
+
+#EOMCBG
+EOMCBG = DDS("EOMCBG")
+EOMCBG.test.f(237.743).a(0.02).p(0)
+
+#EOM532
+EOM532 = DDS("EOM532")
+EOM532.test.f(237.243).a(0.02).p(0)
 
 # EITSigma States
 EITSigma = DDS("EITSigma")
@@ -345,7 +366,14 @@ with Seq("Detection"):
     Cooling.off | PMT2 | 0
     Cooling.off | TTL_0 | 0
 
-Seq("Protect") | Cooling.s8 | Pumping.s8 | EITPi.s8 | EITSigma.s8 | 0
+# Seq('Protect') | Cooling.on | Protection.on | AOM614.on | AOM650.on | EOM532.off  |EOMCBG.off| 0
+# Seq('Catch') | Cooling.on | Protection.on | LoadLA553.on | AOM614.on | AOM650.on| 0
+# Seq('Cooling') | Cooling.on | Pumping.off | PiPumping.off| AOM614.on | AOM650.on | EOMCBG.off|Protection.on | EOM532.off |  0
+# Seq('COoling') | Cooling.on | Pumping.off | PiPumping.off | LoadLA553.on|Protection.on |AOM614.on | AOM650.on |0
+
+# with Seq('Detection'):
+#     Cooling.detection | AOM650.on | AOM614.off | EOM532.off | EOMCBG.off|PMT |  0
+#     Cooling.on | AOM614.off  | AOM650.on| EOM532.off |  0
 
 Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | PMT | 0
 Seq("S1") | dds0.s1 | dds1.s1 | dds2.s1 | dds3.s1 | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1 | 0

@@ -10,6 +10,19 @@ from compiler.Opfunc.OpfuncRF_DDS import OpfuncRF_DDS
 from typing import List
 
 # init seq
+Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | PMT | 0
+Seq("S1") | dds0.s1 | dds1.s1 | dds2.s1 | dds3.s1 | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1 | 0
+#Cooling
+# Cooling.protect.f(90).a(0.8*Thresh['493'])
+# Cooling.on.f(102).a(0.4*Thresh['493'])#105
+# Cooling.detection.f(103).a(0.5*Thresh['493'])
+
+dds0.s0.f(100).a(0.5)
+dds1.s0.f(110).a(0.6)
+dds2.s0.f(120).a(0.7)
+dds3.s0.f(130).a(0.8)
+# seq_cooling = Seq().Protect(2000).Cooling(1200).Detection(2000,10).Cooling(1000)
+
 seq = Seq().S0(4).S1(5)
 seqs4Bell = seq.seq
 
@@ -19,7 +32,11 @@ ttl: List[OpfuncPulse] = [OpfuncPulse(DeviceID=i) for i in range(32)]
 seqsIR = utils.compile2Bell(seqs4Bell)  # Bell IR
 print(seqsIR)
 print("seqsIR length:", len(seqsIR))
+
 # load IR to device
+# 打开dds.txt文件，并将其清空
+with open("data/dds.txt", "w") as f:
+    pass
 for seq in seqsIR:
     for item in seq:
         if item[0] == "dds":

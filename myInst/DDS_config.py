@@ -1,5 +1,6 @@
 from DDS_Seq import DDS, Seq
 
+Thresh = {"493":0.14,"553":0.18,'614':0.35,'650':0.3,'1762EOM':0.2,'532':0.2}
 # Pumping States
 Pumping = DDS("Pumping")
 Pumping.s0.f(100).a(0.2)
@@ -12,6 +13,8 @@ Pumping.s6.f(220).a(0.5)
 Pumping.s7.f(220).a(0.25)
 Pumping.s8.f(220).a(0)
 Pumping.on.f(120).a(0.1)
+Pumping.on.f(125).a(0.5*Thresh['493'])
+Pumping.off.f(125).a(0)
 
 # Cooling States
 Cooling = DDS("Cooling")
@@ -24,27 +27,51 @@ Cooling.s5.f(220).a(0.75)
 Cooling.s6.f(220).a(0.5)
 Cooling.s7.f(220).a(0.25)
 Cooling.s8.f(220).a(0)
+Cooling.on.f(103).a(0.45*Thresh['493'])
+Cooling.off.f(125).a(0)
+Cooling.detection.f(104).a(0.4*Thresh['493'])
+
+# 493 Protection
+Protection = DDS('Protect')
+Protection.on.f(120).a(0.12*Thresh['493']).p(0)
+Protection.off.f(120).a(0) 
 
 # Protection
 Protection = DDS("Protection")
 Protection.on.f(120).a(0.1)
 
+#LoadLA553
+LoadLA553 = DDS('LoadLA553')
+LoadLA553.on.f(130).a(1*Thresh['553']).p(0)
+LoadLA553.off.f(130).a(0)
+
 #Pipuming
 PiPumping = DDS("PiPumping")
-PiPumping.on.f(100).a(0.1)
+PiPumping.on.f(130).a(0.2*Thresh['493'])
 Pumping.power.f(148).a(0.1130000000000001)
+PiPumping.off.f(130).a(0)
 
 #AOM650
 AOM650 = DDS("AOM650")
 AOM650.on.f(130).a(0.13)
+AOM650.off.f(130).a(0)
+
+#614
+AOM614 = DDS('AOM614')
+AOM614.on.f(130).a(0.9*Thresh['614'])
+AOM614.off.f(130).a(0)
 
 #EOMCBG
 EOMCBG = DDS("EOMCBG")
 EOMCBG.test.f(237.743).a(0.02).p(0)
+EOMCBG.on.f(237.743).a(0.1)
+EOMCBG.off.f(235).a(0.2)
 
 #EOM532
 EOM532 = DDS("EOM532")
 EOM532.test.f(237.243).a(0.02).p(0)
+EOM532.on.f(237.743).a(0.7)
+EOM532.off.f(235).a(0.2)
 
 # EITSigma States
 EITSigma = DDS("EITSigma")
@@ -315,7 +342,8 @@ dds3.s1.f(170).a(0.8)
 #             'dds16', 'dds17', 'dds18', 'dds19',
 #             'dds20', 'dds21', 'dds22', 'dds23'
 #             ]
-DDS.List = ["dds0", "dds1", "dds2", "dds3"]
+
+# DDS.List = ["dds0", "dds1", "dds2", "dds3"]
 
 for i in range(len(DDS.List)):
     name = DDS.List[i]
@@ -377,3 +405,56 @@ with Seq("Detection"):
 
 Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | PMT | 0
 Seq("S1") | dds0.s1 | dds1.s1 | dds2.s1 | dds3.s1 | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1 | 0
+
+Seq('Protect') | Cooling.on | Protection.on | AOM614.on | AOM650.on |  0
+Seq('Catch') | Cooling.on | Protection.on | AOM614.on | AOM650.on| 0
+Seq('Cooling') | Cooling.on | AOM614.on | AOM650.on |Protection.on |  0
+Seq('test')| EOM532.test |0
+with Seq('Detection'):
+    Cooling.on | AOM650.on | PMT |  0
+    Cooling.on | AOM614.off  | AOM650.on |  0
+
+# DDS.List = [ 'PiPumping','Cooling', 'Pumping', 'dds03',
+#             'AOM614', 'AOM650', 'EOMCBG', 'EOM532',
+#              'LoadLA553', 'AOM1762', 'Protect', 'dds23',
+#             'EOM1762', 'MW', 'dds32', 'dds33',
+#             'dds40', 'dds41', 'dds42', 'dds43',
+#             'CBGAOM', '532AOM2', '532AOM3', '532AOM'             
+#             ]
+
+seq_cooling = Seq().Protect(2000).Cooling(1200).Detection(5000,10).Cooling(1000)
+
+# print(seq_cooling.seq)
+# [[Cooling.on = [103, 0.06300000000000001, 0], Protection.on = [120, 0.1, 0], AOM614.on = [130, 0.315, 0], AOM650.on = [130, 0.13, 0], 2000], [Cooling.on = [103, 0.06300000000000001, 0], AOM614.on = [130, 0.315, 0], AOM650.on = [130, 0.13, 0], Protection.on = [120, 0.1, 0], 1200], [Cooling.on = [103, 0.06300000000000001, 0], AOM650.on = [130, 0.13, 0], 2, 5000], [Cooling.on = [103, 0.06300000000000001, 0], AOM614.off = [130, 0, 0], AOM650.on = [130, 0.13, 0], 10], [Cooling.on = [103, 0.06300000000000001, 0], AOM614.on = [130, 0.315, 0], AOM650.on = [130, 0.13, 0], Protection.on = [120, 0.1, 0], 1000]]
+# seqs = seq_cooling.seq
+# for seq in seqs:
+        # 逆序遍历
+        # Flag_TTL = False
+        # Flag_Delay = False
+        # delay = 0
+        # DDSList = []
+        # for item in seq[::-1]:
+            # print(type(item))
+            # if type(item)==type(DDS("dds")):
+                # DeviceID = extract_number(item.name[0])
+                # Freq = item[0]
+                # Amp = item[1]
+                # Phase = item[2]
+                # DDSList.append(["dds",DeviceID, Freq, Amp, Phase,delay])
+            # elif Flag_Delay == False:
+                # delay = item # 读取延时
+                # Flag_Delay = True
+                # print("delay:", delay)
+            # elif Flag_TTL==False: # 读取TTL
+                # TTL = item
+                # mode = 1
+                # if mode == #TTL mode 在硬件中不能导入
+                # Flag_TTL = True
+                # print("TTL channel:", TTL)
+        # DDSList.reverse() # 反转顺序
+        # DDSList.append(["TTL",TTL, mode, delay])
+        # print("DDSList:", DDSList)
+        # seq4Bell.append(DDSList)
+    # print("Bell序列:", seq4Bell)
+# print(type(seq[::-1]))
+# print(type(DDS("dds")))

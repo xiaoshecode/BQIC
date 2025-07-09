@@ -201,7 +201,7 @@ def TCMReceiveJump():
 if __name__ == "__main__":
     # LoadDDS(2)
     # print(LoadDDS(2))
-    Inst = LoadDDS(2)
+    Inst = LoadDDS(1)
     # 将列表逐行写入文件
     # for item in Inst:
     #     print(item)

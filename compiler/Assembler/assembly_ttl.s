@@ -1,5 +1,5 @@
 addi x1 x0 0
-addi x2 x0 5
+addi x2 x0 1
 setur y0 x1 0
 setur y1 x1 0
 setur y2 x1 0
@@ -24,16 +24,5 @@ setur y20 x1 0
 setur y21 x1 0
 setur y22 x1 0
 setur y23 x1 0
-setur y24 x1 0
-setur y25 x1 0
-setur y26 x1 0
-setur y27 x1 0
-setur y28 x1 0
-setur y29 x1 0
-setur y30 x1 0
-setur y31 x1 0
 addi x1 x1 1
-bne x1 x2 -132
-jal x0 0
-jal x0 0
-jal x0 0
+bne x1 x2 -100

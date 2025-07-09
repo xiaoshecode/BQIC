@@ -65,7 +65,6 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
         # full_128 是一个十进制数，将其转换为16进制数并补齐32位
         full_128hex = full_128.to_bytes(16, byteorder='big')
         
-
         self.array_128bit.append(full_128hex)
 
     def read_arrays(self):
@@ -88,6 +87,7 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
             for item in self.array_128bit:
                 hex_string = ''.join(format(x, '02x') for x in item)
                 f.write(hex_string + '\n')
+                # f.write("\n")
     
 if __name__ == "__main__":
     DDS = OpfuncRF_DDS(DeviceID=0)

@@ -4,6 +4,7 @@ def extract_number(string):
     # 使用正则表达式匹配所有数字
     numbers = re.findall(r'\d+', string)
     # 如果找到数字，返回第一个数字
+    # print("numbers:", numbers)
     if numbers:
         return int(numbers[0])
     # 如果没有找到数字，返回None
@@ -30,18 +31,18 @@ def compile2Bell(seqs): # RTMQv1.0 transfer to Bell
                 Amp = item[1]
                 Phase = item[2]
                 DDSList.append(["dds",DeviceID, Freq, Amp, Phase,delay])
-            elif Flag_Delay == False:
+            if Flag_Delay == False:
                 delay = item # 读取延时
                 Flag_Delay = True
                 # print("delay:", delay)
-            elif Flag_TTL==False: # 读取TTL
-                TTL = item
-                mode = 1
+            if Flag_TTL==False: # 读取TTL
+                # TTL = item
+                mode = 1 #1: input,0:output
                 # if mode == #TTL mode 在硬件中不能导入
                 Flag_TTL = True
                 # print("TTL channel:", TTL)
         DDSList.reverse() # 反转顺序
-        DDSList.append(["TTL",TTL, mode, delay])
+        DDSList.append(["TTL", mode, delay])
         # print("DDSList:", DDSList)
         seq4Bell.append(DDSList)
     # print("Bell序列:", seq4Bell)

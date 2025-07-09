@@ -1,4 +1,4 @@
-import compiler.Assembler.utils4assemble as utils4assemble
+import utils4assemble
 
 
 def riscv_assemble_insts(insts, riscv_config_path):
@@ -123,32 +123,61 @@ def write_machinecode2hex(filename, machine_codes):
 
 def generate_assemble(input_filename, output_filename, output_hex_filename, riscv_config_path):
     instructions = read_assembly_file(input_filename)
+    # print("汇编指令:", instructions)
     machine_codes = [riscv_assemble_insts(inst, riscv_config_path) for inst in instructions]
     write_machinecode(output_filename, machine_codes)
     write_machinecode2hex(output_hex_filename, machine_codes)
     print("Assembly code assembled successfully!")
 
+
+def merge_param_files_with_header(file1, output_file):
+    with open(file1, 'r') as f1:
+        lines1 = f1.readlines()
+    total_lines = len(lines1)
+    total_lines_hex = format(total_lines, '04x')
+    header = f"eb9c55aa0002000000000000{total_lines_hex}0000\n"
+    merged_content = [header] + lines1
+    with open(output_file, 'w') as output:
+        output.writelines(merged_content)
+    print(f"添加header成功，文件已保存到: {output_file}")
+    print(f"header: {header.strip()}")
 # testbench
 if __name__ == "__main__":
     # Example usage
-    instructions = [
-        "add x1 x2 x3",
-        "sub x4 x5 x6",
-        "lw x7 0(x8)",
-        "sw x9 4(x10)",
-        "beq x11 x12 -16",
-        "slli x11 x12 3",
-        "lui x2 786432",
-        "jal x0 20",
-        "auipc x1 20",
-        "lujr x1 x2",
-        "luw x1 z1",
-        "setur y1 x1 20",
-        "setui y1 20",
-    ]
+    # instructions = [
+    #     "addi x1 x0 0",
+    #     "addi x2 x0 1",
+    #     "setur y0 x1 0",
+    #     "setur y1 x1 0",
+    #     "setur y2 x1 0",
+    #     "setur y3 x1 0",
+    #     "setur y4 x1 0",
+    #     "setur y5 x1 0",
+    #     "setur y6 x1 0",
+    #     "setur y7 x1 0",
+    #     "setur y8 x1 0",
+    #     "setur y9 x1 0",
+    #     "setur y10 x1 0",
+    #     "setur y11 x1 0",
+    #     "setur y12 x1 0",
+    #     "setur y13 x1 0",
+    #     "setur y14 x1 0",
+    #     "setur y15 x1 0",
+    #     "setur y16 x1 0",
+    #     "setur y17 x1 0",
+    #     "setur y18 x1 0",
+    #     "setur y19 x1 0",
+    #     "setur y20 x1 0",
+    #     "setur y21 x1 0",
+    #     "setur y22 x1 0",
+    #     "setur y23 x1 0",
+    #     "addi x1 x1 1",
+    #     "bne x1 x2 -100",
+    # ]
     #TODO: more test cases
     riscv_config_path = "riscv_config.json"
-    for inst in instructions:
-        machine_code_hex = riscv_assemble_insts(inst, riscv_config_path)
-        print(f"{inst} -> {machine_code_hex}")
-    generate_assemble("assembly_ttl.s", "test.mem", "test.hex", riscv_config_path)
+    # for inst in instructions:
+    #     machine_code_hex = riscv_assemble_insts(inst, riscv_config_path)
+    #     print(f"{inst} -> {machine_code_hex}")
+    generate_assemble("assembly_ttl.s", "test.txt", "test.hex", riscv_config_path)
+    merge_param_files_with_header("test.txt", "test_header.txt")

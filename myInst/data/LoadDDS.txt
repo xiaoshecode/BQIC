@@ -1,5 +1,5 @@
 addi x1 x0 0
-addi x2 x0 2
+addi x2 x0 1
 setur y0 x1 0
 setur y1 x1 0
 setur y2 x1 0

@@ -1,10 +1,8 @@
 import sys
 import os
-# 获取当前脚本所在目录的父目录的父目录
-base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-sys.path.append(base_path)
 
-from compiler.Opfunc.OpfuncDevice import OpfuncRF
+from OpfuncDevice import OpfuncRF
+
 # TODO: DDS 处理参数中多了delay这项
 class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
     def __init__(self, DeviceID):

@@ -1,4 +1,4 @@
-from DDS_Seq import DDS, Seq
+from CompilerDev.Interpreter.DDS_Seq import DDS, Seq
 
 Thresh = {"493":0.14,"553":0.18,'614':0.35,'650':0.3,'1762EOM':0.2,'532':0.2}
 # Pumping States

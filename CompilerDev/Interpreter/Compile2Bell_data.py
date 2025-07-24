@@ -1,11 +1,14 @@
 import sys
 import os
-from ZHXconfig import *
+
+from DDS_Seq import *
+from DDS_config import * # type: ignore
+
 import CompileUtils as utils
 
 sys.path.append("..")
-from compiler.Opfunc.OpfuncPulse import OpfuncPulse
-from compiler.Opfunc.OpfuncRF_DDS import OpfuncRF_DDS
+from Opfunc.OpfuncPulse import OpfuncPulse
+from Opfunc.OpfuncRF_DDS import OpfuncRF_DDS
 
 from typing import List
 

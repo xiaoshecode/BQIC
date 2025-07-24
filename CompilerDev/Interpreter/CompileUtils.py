@@ -1,5 +1,5 @@
 import re
-from DDS_Seq import DDS, Seq
+from CompilerDev.Interpreter.DDS_Seq import DDS, Seq
 def extract_number(string):
     # 使用正则表达式匹配所有数字
     numbers = re.findall(r'\d+', string)

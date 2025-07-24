@@ -1,12 +1,7 @@
 import sys
 import os
 
-# 获取当前脚本所在目录的父目录的父目录
-base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-sys.path.append(base_path)
-
-from compiler.Opfunc.OpfuncDevice import OpfuncDevice
-
+from OpfuncDevice import *
 
 class OpfuncPulse(OpfuncDevice):
     def __init__(self, DeviceID):

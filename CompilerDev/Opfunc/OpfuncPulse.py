@@ -1,7 +1,4 @@
-import sys
-import os
-
-from OpfuncDevice import *
+from Opfunc.OpfuncDevice import OpfuncDevice
 
 class OpfuncPulse(OpfuncDevice):
     def __init__(self, DeviceID):

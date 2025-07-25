@@ -1,29 +1,22 @@
 import sys
 import os
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
-from DDS_Seq import *
-from DDS_config import * # type: ignore
+# print("project_root:", project_root)
+# print("sys.path:", sys.path)
+
+from DDS_Seq import DDS,Seq
+from config418 import * 
 
 import CompileUtils as utils
 
-sys.path.append("..")
 from Opfunc.OpfuncPulse import OpfuncPulse
 from Opfunc.OpfuncRF_DDS import OpfuncRF_DDS
 
 from typing import List
-
 # init seq
-# Seq("S0") | dds0.s0 | dds1.s0 | dds2.s0 | dds3.s0 | 0
-# Seq("S1") | dds0.s1 | dds1.s1 | dds2.s1 | dds3.s1 | dds12.s0 | dds13.s0 | dds14.s0 | dds15.s0 | TTL_1 | 0
-#Cooling
-# Cooling.protect.f(90).a(0.8*Thresh['493'])
-# Cooling.on.f(102).a(0.4*Thresh['493'])#105
-# Cooling.detection.f(103).a(0.5*Thresh['493'])
-
-# dds0.s0.f(163).a(0.04)
-# dds1.s0.f(102).a(0.04)
-# dds2.s0.f(125).a(0.08)
-# dds3.s0.f(0).a(0)
 seq_cooling = Seq().Operate(4000).Detection(10000,10).Operate_0(4000)
 
 # seq = Seq().S0(4)

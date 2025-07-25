@@ -1,7 +1,4 @@
-import sys
-import os
-
-from OpfuncDevice import OpfuncRF
+from Opfunc.OpfuncDevice import OpfuncRF
 
 # TODO: DDS 处理参数中多了delay这项
 class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类

@@ -78,7 +78,7 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
 
     def output2file(self, filename = "OpfuncRF_DDS.txt"):
         # 将128bit数组按照16进制写入txt文件
-        with open(filename, 'a') as f:
+        with open(filename, 'a') as f: # 打开文件并追加内容
             for item in self.array_128bit:
                 hex_string = ''.join(format(x, '02x') for x in item)
                 f.write(hex_string + '\n')

@@ -118,14 +118,14 @@ def LoadDDS(x2: int):
     :return: 汇编指令字符串
     返回生成的汇编指令列表和汇编指令的长度
     """
-    # 设置初始循环变量x1, 循环截至变量x2
+    # 设置初始循环变量x1, 循环截至变量x2, 同步触发写入y40
     Asmembly = []
     Asmembly.append(addi("x1", "x0", 0))
     Asmembly.append(addi("x2", "x0", x2))
-    for i in range(24):
-        Asmembly.append(setur("y{}".format(i), "x1", 0))  # 设置寄存器y0为当前频率
+    # for i in range(24):
+    Asmembly.append(setur("y40", "x1", 0))  # 设置寄存器y40为当前频率
     Asmembly.append(addi("x1", "x1", 1))
-    Asmembly.append(bne("x1", "x2", -4 * (1 + 4 * 6)))  # 循环结束条件
+    Asmembly.append(bne("x1", "x2", -4 * (1 + 1)))  # 循环结束条件
     return Asmembly, len(Asmembly)
 
 
@@ -201,10 +201,11 @@ def TCMReceiveJump():
 if __name__ == "__main__":
     # LoadDDS(2)
     # print(LoadDDS(2))
-    Inst = LoadDDS(1)
+    SeqLen = 3
+    Inst = LoadDDS(3)
     # 将列表逐行写入文件
     # for item in Inst:
     #     print(item)
-    with open("data/LoadDDS.txt", "w") as f:
+    with open("../Output/LoadDDS.txt", "w") as f:
         for item in Inst[0]:
             f.write(item + "\n")

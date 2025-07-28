@@ -21,13 +21,16 @@ protection = DDS('Operate_dds_00')
 cooling = DDS('Operate_dds_01')
 pipumping = DDS('Operate_dds_02')
 repumping = DDS('Operate_dds_03')
+
+
+
 # repumping = DDS('Operate_dds_10')
 protection.on.f(163).a(0.04)#protection0.045 163
-cooling.detection.f(102).a(0.04)#carrier0.04 102
-pipumping.on.f(102).a(0.08)#pi-pumping0.088,0.055  0.032 0.014
 #pipumping.on.f(163).a(0.045)
 cooling.on.f(102).a(0.038)#0.088
+# cooling.detection.f(102).a(0.04)#carrier0.04 102
 #cooling.on.f(100).a(0.008) #repumping0.5
+pipumping.on.f(101).a(0.08)#pi-pumping0.088,0.055  0.032 0.014
 repumping.on.f(125).a(0.44)
 
 # Assign DDS sequences to physical ports.
@@ -47,7 +50,7 @@ operate_ttl_1 = 2
 operate_ttl_2 = 1
 PMT = 0
 
-Seq('Operate_0') | protection.on | cooling.on  | pipumping.on  | repumping.on  | 0
+Seq('Operate_0') | pipumping.on  | repumping.on  | 0
 Seq('Operate')   | protection.on | cooling.on  | pipumping.on  | repumping.on  | operate_ttl |0
 Seq('Operate_1') | protection.on | cooling.on  | pipumping.on  | operate_ttl_1 | 0
 Seq('Operate_2') | protection.on | cooling.on  | pipumping.on  | operate_ttl_2 | 0
@@ -56,8 +59,8 @@ seq = Seq().Operate(4000)#g
 seq_ttl = Seq().Operate_1(5).Operate_2(100)
 
 with Seq('Detection'):
-    protection.on | cooling.on | pipumping.on | repumping.on | PMT |  0
-    protection.on | cooling.on | pipumping.on | repumping.on | 0
+    protection.on | cooling.on | PMT |  0
+    protection.on | pipumping.on | repumping.on | 0
     
 # seq_cooling = Seq().Operate(4000).Detection(10000,10).Operate_0(4000)
 # data = sequencer.scan(seq_cooling,cooling.on.a,(0,0.025,0.005),"C0",100,repeats = 50)

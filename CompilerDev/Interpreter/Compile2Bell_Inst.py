@@ -110,11 +110,12 @@ def StopCPU():
 
 
 # no branch
-def LoadDDS(x2: int):
+def LoadDDS(x2: int, x3: int = 0):
     # TODO : need to be optimized
     """
     加载DDS指令
     :param x2: 循环截至变量
+    :param x3: 程序运行数据存储的基地址
     :return: 汇编指令字符串
     返回生成的汇编指令列表和汇编指令的长度
     """
@@ -123,9 +124,10 @@ def LoadDDS(x2: int):
     Asmembly.append(addi("x1", "x0", 0))
     Asmembly.append(addi("x2", "x0", x2))
     # for i in range(24):
-    Asmembly.append(setur("y40", "x1", 0))  # 设置寄存器y40为当前频率
+    Asmembly.append(setur("y40", "x3", 0))  # 设置寄存器y40为当前频率
+    Asmembly.append(addi("x3", "x3", 1))
     Asmembly.append(addi("x1", "x1", 1))
-    Asmembly.append(bne("x1", "x2", -4 * (1 + 1)))  # 循环结束条件
+    Asmembly.append(bne("x1", "x2", -4 * (3)))  # 循环结束条件
     return Asmembly, len(Asmembly)
 
 
@@ -134,9 +136,9 @@ def LoadDDS(x2: int):
 
 
 def LoadTTL(x2: int):
-    #
     """
     加载TTL指令
+    :param x1: 循环变量 == 序列长度 
     :param x2: 循环截至变量
     :return: 汇编指令字符串
     返回生成的汇编指令列表和汇编指令的长度

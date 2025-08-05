@@ -125,7 +125,7 @@ def LoadDDS(x2: int, x3: int = 0):
     Asmembly.append(addi("x2", "x0", x2))
     # for i in range(24):
     Asmembly.append(setur("y40", "x3", 0))  # 设置寄存器y40为当前频率
-    Asmembly.append(addi("x3", "x3", 1))
+    Asmembly.append(addi("x3", "x3", 1)) #程序运行数据存储的基地址加一
     Asmembly.append(addi("x1", "x1", 1))
     Asmembly.append(bne("x1", "x2", -4 * (3)))  # 循环结束条件
     return Asmembly, len(Asmembly)
@@ -208,6 +208,8 @@ if __name__ == "__main__":
     # 将列表逐行写入文件
     # for item in Inst:
     #     print(item)
-    with open("../Output/LoadDDS.txt", "w") as f:
+    OutputDir = "../Output/"
+    OutputPath = OutputDir + "Inst.txt"
+    with open(OutputPath, "w") as f:
         for item in Inst[0]:
             f.write(item + "\n")

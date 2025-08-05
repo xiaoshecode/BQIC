@@ -1,3 +1,4 @@
+#0. 导入必要的模块
 import sys
 import os
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -16,23 +17,29 @@ from Opfunc.OpfuncPulse import OpfuncPulse
 from Opfunc.OpfuncRF_DDS import OpfuncRF_DDS
 
 from typing import List
-# init seq
+
+#1.init seq 导入一个Config文件中定义好的时间序列或者基于已有的时序单元设计一个新的时间序列
 seq_cooling = Seq().Operate(4000).Detection(10000,10).Operate_0(5000)
 
-# seq = Seq().S0(4)
+#2. 对序列进行编译，转换成需要的中间表示
 seqs4Bell = seq_cooling.seq
-# print("seqs4Bell:", seqs4Bell,"\n")
-dds: List[OpfuncRF_DDS] = [OpfuncRF_DDS(DeviceID=i) for i in range(4)] # Bell设备有4个DDS通道，每个通道上有6个频率，TODO：扩充通道数
-ttl: List[OpfuncPulse] = [OpfuncPulse(DeviceID=i) for i in range(32)]
-
 seqsIR = utils.compile2Bell(seqs4Bell)  # Bell IR
+# print("seqs4Bell:", seqs4Bell,"\n")
 print("seqsIR:",seqsIR)
 print("seqsIR length:", len(seqsIR))
 
+#3. 定义Bell设备的DDS和TTL通道
+dds: List[OpfuncRF_DDS] = [OpfuncRF_DDS(DeviceID=i) for i in range(4)] # Bell设备有4个DDS通道，每个通道上有6个频率，TODO：扩充通道数
+ttl: List[OpfuncPulse] = [OpfuncPulse(DeviceID=i) for i in range(32)]
 
-# TODO： 需要将IR指令转换为设备data数据
+
+
+#4. 需要将IR指令转换为设备data数据
 # load IR to device
-with open("../Output/dds.txt", "w") as f: # 打开dds.txt文件，并将其清空
+OutputDir = "../Output/"
+OutputPath = OutputDir + "Data.txt"
+OutputPathwithHeader = OutputDir + "DatawithHeader.txt"
+with open(OutputPath, "w") as f: # 打开dds.txt文件，并将其清空
     pass
 
 for seq in seqsIR:
@@ -62,8 +69,8 @@ for seq in seqsIR:
             dds[i].gen_assembler()
             dds[i].gen_assembler()
             dds[i].adjust_array_length() #add EOF
-        
-    OutputPath = "../Output/dds.txt"
+    
+
     for i in range(len(dds)):
         dds[i].output2file(OutputPath) # 输出到文件
 
@@ -76,7 +83,7 @@ for seq in seqsIR:
                 ttl[i].gen_assembler()
                 ttl[i].adjust_array_length() #add EOF
 
-utils.merge_param_files_with_header("../Output/dds.txt", "../Output/ddswithheader.txt")
+utils.merge_param_files_with_header(OutputPath, OutputPathwithHeader)
 
     # for item in seq:
     #     if item[0] == "dds":

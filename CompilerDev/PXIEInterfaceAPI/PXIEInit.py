@@ -8,10 +8,9 @@ import numpy as np
 # ttl0 = "0007".encode("utf-8")
 # ttl_config_init_num = ttl_config_init(ttl_in_out_config)
 
-
-class PXIEInit:
-    def __init__(self, ttl_in_out_config):
-        self.DRIVER_ELEC = PXIEUtils.DRIVERELEC("Driver_isa.dll")
+class PXIEDriver:
+    def __init__(self, DriverPath,ttl_in_out_config):
+        self.DRIVER_ELEC = PXIEUtils.DRIVERELEC(DriverPath) # 载入动态链接库
         self.awg0 = "0005"# 以str保存，在底层会转换为bytes
         self.awg1 = "000d"
         self.ttl0 = "0007"
@@ -118,7 +117,7 @@ class PXIEInit:
             return Delay
         else:
             print("未找到同步成功的延迟值")
-            return None
+            return -1
 
     def SetDeley(self, DeviceID, Delay):
         """
@@ -128,7 +127,11 @@ class PXIEInit:
         time.sleep(0.1)
         self.DRIVER_ELEC.awg_sync_delay_success(DeviceID)
 
-
+    def SetTTL(self, DeviceID, ttl_config):
+        """
+        用于设置TTL配置
+        """
+        self.DRIVER_ELEC.sys_ttl_status(DeviceID, ttl_config)
 if __name__ == "__main__":
     pass
     # 测试代码

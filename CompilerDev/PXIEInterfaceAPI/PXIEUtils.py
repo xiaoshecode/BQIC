@@ -148,6 +148,26 @@ class DRIVERELEC:
         awgIDByte = awgID.encode("utf-8")
         self.lib.awg_sync_delay_success(awgIDByte)
 
+    def awg_dac_sync_success(self,awgID:str):
+        """
+        用于查询DAC上电同步状态
+        对于单个DAC来说，上电同步状态完成从板卡上查询到的状态是0x30，由于每次查询到的是32bit数据，因此将4片DAC状态合并为32bit,0x30303030表示4片DAC均上电同步成功
+        """
+        awgIDByte = awgID.encode("utf-8")
+        DacStatus = self.lib.awg_dac_sync_success(awgIDByte)
+        return DacStatus
+    
+    def awg_dac_freq(self,awgID:str,BoardID:int):
+        """
+        用于查询DAC当前输出的主频
+        BoardID: DAC板卡ID，0，1，2，3
+        由于设定的频率字的位宽是32位，但是会出现频率大于250M的情况，因此实际位宽是34位，而查询寄存器的位宽是32位，因此截取频率字的高32位进行读出，由于去掉了低两位，因此还原数据应该是freq/2^30*250
+        """
+        awgIDByte = awgID.encode("utf-8")
+        Freq = self.lib.awg_dac_freq(awgIDByte,BoardID)
+        Freq = Freq/2**30*250
+        return Freq
+
 
 # 具体使用
 # ttl_config_init_num = ttl_config_init(ttl_in_out_config)

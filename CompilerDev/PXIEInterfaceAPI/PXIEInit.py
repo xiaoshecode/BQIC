@@ -132,6 +132,7 @@ class PXIEDriver:
         用于设置TTL配置
         """
         self.DRIVER_ELEC.sys_ttl_status(DeviceID, ttl_config)
+    
 if __name__ == "__main__":
     pass
     # 测试代码

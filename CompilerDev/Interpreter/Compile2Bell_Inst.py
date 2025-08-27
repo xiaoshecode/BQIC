@@ -123,11 +123,13 @@ def LoadDDS(x2: int, x3: int = 0):
     Asmembly = []
     Asmembly.append(addi("x1", "x0", 0))
     Asmembly.append(addi("x2", "x0", x2))
-    # for i in range(24):
+    Asmembly.append(addi("x3", "x0", 0))
+
     Asmembly.append(setur("y40", "x3", 0))  # 设置寄存器y40为当前频率
-    Asmembly.append(addi("x3", "x3", 1)) #程序运行数据存储的基地址加一
+    Asmembly.append(addi("x3", "x3", 1))  # 程序运行数据存储的基地址加一
     Asmembly.append(addi("x1", "x1", 1))
     Asmembly.append(bne("x1", "x2", -4 * (3)))  # 循环结束条件
+    Asmembly.append(EndSeq())  # 结束指令必须要有
     return Asmembly, len(Asmembly)
 
 
@@ -138,7 +140,7 @@ def LoadDDS(x2: int, x3: int = 0):
 def LoadTTL(x2: int):
     """
     加载TTL指令
-    :param x1: 循环变量 == 序列长度 
+    :param x1: 循环变量 == 序列长度
     :param x2: 循环截至变量
     :return: 汇编指令字符串
     返回生成的汇编指令列表和汇编指令的长度
@@ -147,14 +149,17 @@ def LoadTTL(x2: int):
     Asmembly = []
     Asmembly.append(addi("x1", "x0", 0))
     Asmembly.append(addi("x2", "x0", x2))
-    for i in range(32):
-        Asmembly.append(setur("y{}".format(i), "x1", 0))  # 设置寄存器y0为当前频率
+    Asmembly.append(addi("x3", "x0", 0))
+
+    Asmembly.append(setur("y40", "x3", 0))  # 设置寄存器y0为当前频率
+    Asmembly.append(addi("x3", "x3", 1))  # 程序运行数据存储的基地址加一
     Asmembly.append(addi("x1", "x1", 1))
-    Asmembly.append(bne("x1", "x2", -4 * (1 + 32)))  # 循环结束条件
+    Asmembly.append(bne("x1", "x2", -4 * (3)))  # 循环结束条件
+    Asmembly.append(EndSeq()) # 结束指令
     return Asmembly, len(Asmembly)
 
 
-def LoadwithBranch_TTL(BranchLen: list, BranchBlock:list):  # Two Branch
+def LoadwithBranch_TTL(BranchLen: list, BranchBlock: list):  # Two Branch
     # 第一段branch的长度为BranchLen[0]，相对跳转地址为4*(BranchLen[0])
     # 第二段branch的长度为BranchLen[1]，
     # JumpReg = "x31" # ttl计数结果放在x31寄存器中
@@ -169,10 +174,13 @@ def LoadwithBranch_TTL(BranchLen: list, BranchBlock:list):  # Two Branch
         bne("x31", "x0", 4 * (BranchLen[0]))
     )  # TODO: 增加其他判断类型,增加更多跳转分支，增加条件约束
     Asmembly.append(BranchBlock[0])  # 跳转分发，暂停CPU
-    
-    Asmembly.append(BranchBlock[1]) 
+
+    Asmembly.append(BranchBlock[1])
     return Asmembly, len(Asmembly)
+
+
 # def LoadwithBranch_DDS(BranchLen:list):
+
 
 def TCMSendJump():
     """
@@ -180,18 +188,19 @@ def TCMSendJump():
     """
     BranchBlock0 = []
     BranchBlock1 = []
-    BranchBlock0.append(setui("jump", 1)) # 跳转到第一个分支
-    BranchBlock0.append(StopCPU()) # 停止CPU
+    BranchBlock0.append(setui("jump", 1))  # 跳转到第一个分支
+    BranchBlock0.append(StopCPU())  # 停止CPU
 
-    BranchBlock1.append(setui("jump", 2)) # 跳转到第二个分支
-    BranchBlock1.append(StopCPU()) # 停止CPU
-    
+    BranchBlock1.append(setui("jump", 2))  # 跳转到第二个分支
+    BranchBlock1.append(StopCPU())  # 停止CPU
+
     BranchBlock = [BranchBlock0, BranchBlock1]
-    BranchLen = [len(BranchBlock0),len(BranchBlock1)] # 分支长度
+    BranchLen = [len(BranchBlock0), len(BranchBlock1)]  # 分支长度
 
-    Asm,AsmLen = LoadwithBranch_TTL(BranchLen, BranchBlock) # 生成跳转指令
+    Asm, AsmLen = LoadwithBranch_TTL(BranchLen, BranchBlock)  # 生成跳转指令
 
-    return Asm, AsmLen # 返回生成的汇编指令和长度
+    return Asm, AsmLen  # 返回生成的汇编指令和长度
+
 
 def TCMReceiveJump():
     """

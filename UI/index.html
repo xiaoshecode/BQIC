@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量子计算控制系统</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #5a7eff 0%, #4a6cf7 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 10px 30px rgba(90, 126, 255, 0.3);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(90, 126, 255, 0.4);
+            background: linear-gradient(135deg, #6b84ff 0%, #5b7dff 100%);
+        }
+
+        .card:active {
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .card-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .card {
+                padding: 30px 20px;
+                min-height: 150px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .modal-content {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #5a7eff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4a6cf7;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        /* 实时数据显示模态框样式 */
+        .realtime-modal {
+            max-width: 800px;
+            width: 95%;
+            max-height: 90vh;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .realtime-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* 参数库模态框样式 */
+        .parameters-modal {
+            max-width: 600px;
+            width: 95%;
+        }
+
+        .param-group {
+            margin-bottom: 20px;
+        }
+
+        .param-label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .param-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .param-input:focus {
+            outline: none;
+            border-color: #5a7eff;
+        }
+
+        .param-description {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .code-output {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .code-header {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="grid">
+                <button class="card" @click="openModal('submit')">
+                    <div class="icon">📤</div>
+                    <div class="card-title">任务执行和提交区</div>
+                    <div class="card-subtitle">submit</div>
+                </button>
+
+                <button class="card" @click="openModal('realtime')">
+                    <div class="icon">📊</div>
+                    <div class="card-title">实时数据显示</div>
+                    <div class="card-subtitle">Real-time Data</div>
+                </button>
+
+                <button class="card" @click="openModal('parameters')">
+                    <div class="icon">⚙️</div>
+                    <div class="card-title">参数库</div>
+                    <div class="card-subtitle">Parameters</div>
+                </button>
+
+                <button class="card" @click="openModal('control')">
+                    <div class="icon">🎛️</div>
+                    <div class="card-title">操作面板</div>
+                    <div class="card-subtitle">Control Panel</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- 模态框 -->
+        <div v-if="showModal" class="modal-overlay" @click="closeModal">
+            <!-- 实时数据显示模态框 -->
+            <div v-if="currentModule === 'realtime'" class="modal realtime-modal" @click.stop>
+                <h2 class="modal-title">{{ modalTitle }}</h2>
+                <div class="realtime-info">
+                    <div class="info-card">
+                        <div class="info-label">当前值</div>
+                        <div class="info-value">{{ currentValue.toFixed(3) }}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-label">频率 (Hz)</div>
+                        <div class="info-value">{{ sinParams.frequency }}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-label">幅度</div>
+                        <div class="info-value">{{ sinParams.amplitude }}</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-label">相位 (rad)</div>
+                        <div class="info-value">{{ sinParams.phase }}</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas ref="realtimeChart"></canvas>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-secondary" @click="closeModal">关闭</button>
+                </div>
+            </div>
+
+            <!-- 参数库模态框 -->
+            <div v-if="currentModule === 'parameters'" class="modal parameters-modal" @click.stop>
+                <h2 class="modal-title">{{ modalTitle }}</h2>
+                <div class="modal-content">
+                    <div class="param-group">
+                        <label class="param-label">频率 (Hz)</label>
+                        <input 
+                            type="number" 
+                            class="param-input" 
+                            v-model.number="tempParams.frequency"
+                            step="0.1"
+                            min="0.1"
+                            max="10"
+                        >
+                        <div class="param-description">控制sin函数的振荡频率，范围：0.1-10 Hz</div>
+                    </div>
+                    
+                    <div class="param-group">
+                        <label class="param-label">幅度</label>
+                        <input 
+                            type="number" 
+                            class="param-input" 
+                            v-model.number="tempParams.amplitude"
+                            step="0.1"
+                            min="0.1"
+                            max="5"
+                        >
+                        <div class="param-description">控制sin函数的振幅大小，范围：0.1-5</div>
+                    </div>
+                    
+                    <div class="param-group">
+                        <label class="param-label">初始相位 (弧度)</label>
+                        <input 
+                            type="number" 
+                            class="param-input" 
+                            v-model.number="tempParams.phase"
+                            step="0.1"
+                            min="0"
+                            max="6.28"
+                        >
+                        <div class="param-description">控制sin函数的初始相位，范围：0-2π (6.28) 弧度</div>
+                    </div>
+
+                    <div v-if="generatedCode" class="code-output">
+                        <div class="code-header">生成的Python后端代码：</div>
+                        {{ generatedCode }}
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" @click="updateParameters">应用参数</button>
+                    <button class="btn btn-primary" @click="generateBackendCode">生成后端代码</button>
+                    <button class="btn btn-secondary" @click="closeModal">取消</button>
+                </div>
+            </div>
+
+            <!-- 其他模态框 -->
+            <div v-if="currentModule !== 'realtime' && currentModule !== 'parameters'" class="modal" @click.stop>
+                <h2 class="modal-title">{{ modalTitle }}</h2>
+                <div class="modal-content">
+                    <p>{{ modalContent }}</p>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" @click="handleAction">确认</button>
+                    <button class="btn btn-secondary" @click="closeModal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    showModal: false,
+                    currentModule: '',
+                    modalTitle: '',
+                    modalContent: '',
+                    // sin函数参数
+                    sinParams: {
+                        frequency: 1.0,
+                        amplitude: 1.0,
+                        phase: 0.0
+                    },
+                    // 临时参数（用于参数库编辑）
+                    tempParams: {
+                        frequency: 1.0,
+                        amplitude: 1.0,
+                        phase: 0.0
+                    },
+                    // 实时数据
+                    currentValue: 0,
+                    timeData: [],
+                    valueData: [],
+                    chart: null,
+                    animationId: null,
+                    fetchInterval: null,
+                    startTime: Date.now(),
+                    generatedCode: ''
+                }
+            },
+            methods: {
+                openModal(module) {
+                    this.currentModule = module;
+                    this.showModal = true;
+                    switch(module) {
+                        case 'submit':
+                            this.modalTitle = '任务执行和提交区';
+                            this.modalContent = '在这里您可以提交和执行量子计算任务，监控任务状态，查看执行结果。';
+                            break;
+                        case 'realtime':
+                            this.modalTitle = '实时数据显示';
+                            this.modalContent = '实时显示系统运行状态、传感器数据、量子比特状态等关键信息。';
+                            this.initRealtimeChart();
+                            break;
+                        case 'parameters':
+                            this.modalTitle = '参数库';
+                            this.modalContent = '管理和配置系统参数，包括硬件参数、算法参数、校准数据等。';
+                            // 拉取后端参数
+                            fetch('http://localhost:5000/api/sin')
+                                .then(res => res.json())
+                                .then(data => {
+                                    this.tempParams = {
+                                        frequency: data.frequency,
+                                        amplitude: data.amplitude,
+                                        phase: data.phase
+                                    };
+                                });
+                            break;
+                        case 'control':
+                            this.modalTitle = '操作面板';
+                            this.modalContent = '系统控制中心，可以进行设备控制、参数调节、系统维护等操作。';
+                            break;
+                    }
+                },
+                closeModal() {
+                    this.showModal = false;
+                    this.currentModule = '';
+                    this.generatedCode = '';
+                    // 停止实时数据更新
+                    if (this.fetchInterval) {
+                        clearInterval(this.fetchInterval);
+                        this.fetchInterval = null;
+                    }
+                    if (this.animationId) {
+                        cancelAnimationFrame(this.animationId);
+                        this.animationId = null;
+                    }
+                    // 销毁图表
+                    if (this.chart) {
+                        this.chart.destroy();
+                        this.chart = null;
+                    }
+                },
+                initRealtimeChart() {
+                    this.$nextTick(() => {
+                        const ctx = this.$refs.realtimeChart.getContext('2d');
+                        // 如果已有 chart，先销毁
+                        if (this.chart) {
+                            this.chart.destroy();
+                        }
+                        this.chart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: [],
+                                datasets: [{
+                                    label: 'Sin函数实时数据',
+                                    data: [],
+                                    borderColor: '#5a7eff',
+                                    backgroundColor: 'rgba(90, 126, 255, 0.1)',
+                                    borderWidth: 2,
+                                    fill: true,
+                                    tension: 0.4
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    duration: 0
+                                },
+                                interaction: {
+                                    intersect: false
+                                },
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: '时间 (秒)'
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: '幅值'
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            },
+                            plugins: []
+                        });
+                        this.startRealtimeUpdate();
+                    });
+                },
+                startRealtimeUpdate() {
+                    const maxDataPoints = 500; // 增加数据点数量以便拖动查看更多历史数据
+                    this.startTime = Date.now();
+                    // 清空之前的interval
+                    if (this.fetchInterval) {
+                        clearInterval(this.fetchInterval);
+                    }
+                    // 清空图表数据，从新开始
+                    this.chart.data.labels = [];
+                    this.chart.data.datasets[0].data = [];
+                    
+                    this.fetchInterval = setInterval(() => {
+                        fetch('http://localhost:5000/api/sin')
+                            .then(res => {
+                                if (!res.ok) {
+                                    throw new Error('网络请求失败');
+                                }
+                                return res.json();
+                            })
+                            .then(data => {
+                                this.currentValue = data.value;
+                                this.sinParams.frequency = data.frequency;
+                                this.sinParams.amplitude = data.amplitude;
+                                this.sinParams.phase = data.phase;
+                                // 使用后端返回的相对时间作为时间轴
+                                const t = data.current_time ? data.current_time.toFixed(2) : '0.00';
+                                this.chart.data.labels.push(t);
+                                this.chart.data.datasets[0].data.push(data.value);
+                                if (this.chart.data.labels.length > maxDataPoints) {
+                                    this.chart.data.labels.shift();
+                                    this.chart.data.datasets[0].data.shift();
+                                }
+                                // 强制更新图表
+                                this.chart.update();
+                                // 强制重绘
+                                this.chart.render();
+                            })
+                            .catch(error => {
+                                console.error('获取数据失败:', error);
+                            });
+                    }, 50); // 每50ms请求一次，提高刷新率
+                },
+                updateParameters() {
+                    // 应用临时参数到后端
+                    fetch('http://localhost:5000/api/sin/params', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(this.tempParams)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        this.sinParams = {
+                            frequency: data.frequency,
+                            amplitude: data.amplitude,
+                            phase: data.phase
+                        };
+                        alert('参数已更新！');
+                        this.closeModal();
+                    });
+                },
+                generateBackendCode() {
+                    const { frequency, amplitude, phase } = this.tempParams;
+                    
+                    this.generatedCode = `#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Sin函数数据生成器
+自动生成的代码 - ${new Date().toLocaleString()}
+"""
+
+import numpy as np
+import time
+import json
+from datetime import datetime
+
+class SinDataGenerator:
+    def __init__(self):
+        self.frequency = ${frequency}  # Hz
+        self.amplitude = ${amplitude}
+        self.phase = ${phase}  # 弧度
+        self.start_time = time.time()
+    
+    def get_current_value(self):
+        """获取当前时刻的sin函数值"""
+        current_time = time.time() - self.start_time
+        value = self.amplitude * np.sin(2 * np.pi * self.frequency * current_time + self.phase)
+        return value
+    
+    def get_data_point(self):
+        """获取包含时间戳的数据点"""
+        timestamp = time.time()
+        value = self.get_current_value()
+        return {
+            'timestamp': timestamp,
+            'time_str': datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3],
+            'value': value,
+            'parameters': {
+                'frequency': self.frequency,
+                'amplitude': self.amplitude,
+                'phase': self.phase
+            }
+        }
+    
+    def update_parameters(self, frequency=None, amplitude=None, phase=None):
+        """更新参数"""
+        if frequency is not None:
+            self.frequency = frequency
+        if amplitude is not None:
+            self.amplitude = amplitude
+        if phase is not None:
+            self.phase = phase
+        
+        # 重置开始时间
+        self.start_time = time.time()
+    
+    def generate_data_stream(self, duration=10, sample_rate=10):
+        """生成指定时长的数据流"""
+        data_points = []
+        total_samples = int(duration * sample_rate)
+        
+        for i in range(total_samples):
+            time.sleep(1.0 / sample_rate)
+            data_point = self.get_data_point()
+            data_points.append(data_point)
+            print(f"Time: {data_point['time_str']}, Value: {data_point['value']:.6f}")
+        
+        return data_points
+
+# 使用示例
+if __name__ == "__main__":
+    # 创建生成器实例
+    generator = SinDataGenerator()
+    
+    print("Sin函数数据生成器启动")
+    print(f"参数设置: 频率={generator.frequency}Hz, 幅度={generator.amplitude}, 相位={generator.phase}rad")
+    print("-" * 50)
+    
+    try:
+        # 实时数据生成示例
+        for i in range(50):  # 生成50个数据点
+            data_point = generator.get_data_point()
+            print(f"[{i+1:2d}] {data_point['time_str']} | 值: {data_point['value']:8.4f}")
+            time.sleep(0.1)  # 每100ms生成一个数据点
+            
+    except KeyboardInterrupt:
+        print("\\n数据生成停止")
+    
+    print("\\n程序结束")`;
+                },
+                handleAction() {
+                    // 这里可以添加具体的功能逻辑
+                    console.log(`执行 ${this.currentModule} 模块的操作`);
+                    alert(`正在启动 ${this.modalTitle} 模块...`);
+                    this.closeModal();
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

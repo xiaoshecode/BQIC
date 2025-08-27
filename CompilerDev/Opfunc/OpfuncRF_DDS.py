@@ -1,16 +1,16 @@
 from Opfunc.OpfuncDevice import OpfuncRF
+# from OpfuncDevice import OpfuncRF  # 基类,调试用
 
-# TODO: DDS 处理参数中多了delay这项
 class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
     def __init__(self, DeviceID):
         super().__init__(DeviceID)
         self.Freq_clk = 250 * 10**6  # 板载时钟频率250MHz
+        self.Channel = 6 # 一个dds输出端口支持6个频率、相位、幅度可调的输出
         self.Freq = 0  # 24bit
         self.Amp = 0  # 16bit
         self.Phase = 0  # 24bit
         self.Delay = 0  # 32bit
-        self.array_128bit = []  # 128 bit array
-        self.array_32bit = []  # 32 bit array #TODO 现在不需要这个数组了，后续可以删除
+        self.array_128bit = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[]} #存储6个频率的128bit数据
 
     # 保留父类的方法，待后续扩展
     # def open(self):
@@ -20,8 +20,7 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
     #     super().close()
 
     def reset(self):
-        self.array_128bit = []
-        self.array_32bit = []
+        self.array_128bit = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[]} #存储6个频率的128bit数据
         self.Freq = 0
         self.Amp = 0
         self.Phase = 0
@@ -51,7 +50,8 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
             self.Phase = Phase
             self.Delay = Delay
 
-    def gen_assembler(self):  # 转换a/f/p信息为二进制命令
+    def gen_assembler(self,channel):  # 转换a/f/p信息为二进制命令
+        # TODO: 将通道的命名加上
         Freq_bin = int(self.Freq * 2**32 / 250)  # part1 f0 = K/2^32 * Fclk
         Phase_bin = int(self.Phase * 2**32)  # part2 p0 = K/2^32,p=[0,1]
         Amp_bin = int(self.Amp * 2**16)  # part3 Amp = K/2^16
@@ -60,7 +60,7 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
         # full_128 是一个十进制数，将其转换为16进制数并补齐32位
         full_128hex = full_128.to_bytes(16, byteorder='big')
         
-        self.array_128bit.append(full_128hex)
+        self.array_128bit[channel].append(full_128hex)
 
     def read_arrays(self):
         return self.array_128bit
@@ -70,24 +70,28 @@ class OpfuncRF_DDS(OpfuncRF):  # 这里针对Bell设备DDS完成子类
         #   FF_FF_FF_FF
         #   FF_FF_FF_FF
         #   FF_FF_FF_FF
-        self.array_128bit.append(b'\xFF'*16)
+        # self.array_128bit.append(b'\xFF'*16)
         # self.array_32bit.append(b'\xFF'*4)
+        pass 
 
     def getDeviceID(self):
         return self.DeviceID
 
-    def output2file(self, filename = "OpfuncRF_DDS.txt"):
-        # 将128bit数组按照16进制写入txt文件
-        with open(filename, 'a') as f: # 打开文件并追加内容
-            for item in self.array_128bit:
-                hex_string = ''.join(format(x, '02x') for x in item)
-                f.write(hex_string + '\n')
-                # f.write("\n")
-    
+
 if __name__ == "__main__":
     DDS = OpfuncRF_DDS(DeviceID=0)
     DDS.setwaveform(Freq=100, Amp=0.5, Phase=0.5, Delay=100)
-    DDS.gen_assembler()
-    DDS.adjust_array_length()
-    DDS.output2file()
-    print(DDS.read_arrays())
+    DDS.gen_assembler(0)
+    DDS.setwaveform(Freq=200, Amp=0.5, Phase=0.5, Delay=200)
+    DDS.gen_assembler(1)
+    DDS.setwaveform(Freq=300, Amp=0.5, Phase=0.5, Delay=300)
+    DDS.gen_assembler(2)
+    DDS.setwaveform(Freq=400, Amp=0.5, Phase=0.5, Delay=400)
+    DDS.gen_assembler(3)
+    # DDS.adjust_array_length()
+    # DDS.output2file()
+    arrays = DDS.read_arrays()
+    array = arrays[0]
+    array1 = arrays[1]
+    arrays[0].append(array1)
+    print(arrays)

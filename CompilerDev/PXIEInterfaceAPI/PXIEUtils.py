@@ -167,6 +167,8 @@ class DRIVERELEC:
         Freq = self.lib.awg_dac_freq(awgIDByte,BoardID)
         Freq = Freq/2**30*250
         return Freq
+    
+    
 
 
 # 具体使用

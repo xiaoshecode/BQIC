@@ -33,17 +33,20 @@ def compile2Bell(seqs): # RTMQv1.0 transfer to Bell
                 DDSList.append(["dds",DeviceID, Freq, Amp, Phase,delay])
             if Flag_Delay == False:
                 delay = item # 读取延时
-                Flag_Delay = True
                 # print("delay:", delay)
-            if Flag_TTL==False: # 读取TTL
+            if Flag_TTL==False and Flag_Delay == True: # 读取TTL
                 # TTL = item
-                mode = 1 #1: input,0:output
+                # mode = 1 #1: input,0:output
+                Channel = item
                 # if mode == #TTL mode 在硬件中不能导入
                 Flag_TTL = True
                 # print("TTL channel:", TTL)
+                if Channel !=-1:
+                    DDSList.append(["TTL", Channel, delay])
+            Flag_Delay = True
+        print("DDSList:", DDSList)
         DDSList.reverse() # 反转顺序
-        DDSList.append(["TTL", mode, delay])
-        # print("DDSList:", DDSList)
+        
         seq4Bell.append(DDSList)
     # print("Bell序列:", seq4Bell)
     return seq4Bell

@@ -9,16 +9,20 @@ import numpy as np
 # ttl_config_init_num = ttl_config_init(ttl_in_out_config)
 
 class PXIEDriver:
-    def __init__(self, DriverPath,ttl_in_out_config):
-        self.DRIVER_ELEC = PXIEUtils.DRIVERELEC(DriverPath) # 载入动态链接库
-        self.awg0 = "0005"# 以str保存，在底层会转换为bytes
-        self.awg1 = "000d"
+    def __init__(self):
+        # self.DRIVER_ELEC = PXIEUtils.DRIVERELEC(DriverPath) # 载入动态链接库
+        self.awg0 = "0008"# 以str保存，在底层会转换为bytes
+        # self.awg1 = "000d"
         self.ttl0 = "0007"
-        self.ttlconfig = ttl_in_out_config
+        self.ttlconfig = None  # 初始TTL配置为None
+
+    def SetDriverPath(self, DriverPath):
+        self.DRIVER_ELEC = PXIEUtils.DRIVERELEC(DriverPath)
+        print("Driver path set to:", DriverPath)
 
     def init_ttl_config(self, ttl_in_out_config=None):
         # 如果有ttl_in_out_config 参数，则更新，否则保持原样
-        if ttl_in_out_config is not None:
+        if ttl_in_out_config is None:
             self.ttlconfig = ttl_in_out_config
         self.DRIVER_ELEC.sys_ttl_status(self.ttl0, self.ttlconfig)
 
@@ -36,7 +40,7 @@ class PXIEDriver:
         用于对PXIE机箱进行硬件复位
         """
         self.DRIVER_ELEC.sys_reset(DeviceID)
-        self.init_ttl_config()  # 重新设置TTL配置
+        # self.init_ttl_config()  # 重新设置TTL配置
     
     def LoadSeq(self,DeviceType, DeviceID, Inst):
         """
@@ -112,14 +116,14 @@ class PXIEDriver:
                 Delay = int(0 + (minIndex + maxIndex) / 2 * step)
             print("同步延迟值:", Delay)
             # 修改延迟
-            self.SetDeley(DeviceID, Delay)
+            self.SetDelay(DeviceID, Delay)
             # 返回同步延迟值
             return Delay
         else:
             print("未找到同步成功的延迟值")
             return -1
 
-    def SetDeley(self, DeviceID, Delay):
+    def SetDelay(self, DeviceID, Delay):
         """
         用于设置同步延迟值
         """
@@ -132,7 +136,25 @@ class PXIEDriver:
         用于设置TTL配置
         """
         self.DRIVER_ELEC.sys_ttl_status(DeviceID, ttl_config)
+
+    def ReadFreq(self,DeviceID):
+        """
+        用于读取设备的频率
+        """
+        Freq = self.DRIVER_ELEC.awg_dac_freq(DeviceID, 0)
+        return Freq
     
+    def DacStatus(self,DeviceID):
+        """
+        用于查询DAC上电同步状态
+        对于单个DAC来说，上电同步状态完成从板卡上查询到的状态是0x30，由于每次查询到的是32bit数据，因此将4片DAC状态合并为32bit,0x30303030表示4片DAC均上电同步成功
+        """
+        DacStatus = self.DRIVER_ELEC.awg_dac_sync_success(DeviceID)
+        if DacStatus == 0x30303030:
+            print('DAC sync success')
+        else:
+            print('DAC sync failed')
+
 if __name__ == "__main__":
     pass
     # 测试代码

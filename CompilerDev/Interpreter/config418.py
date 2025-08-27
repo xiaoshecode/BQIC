@@ -38,6 +38,11 @@ DDS.List = ['Operate_dds_00', 'Operate_dds_01', 'Operate_dds_02', 'Operate_dds_0
             'Operate_dds_10', 'Zero11', 'Zero12', 'Zero13', 
             'Zero20', 'Zero21', 'Zero22', 'Zero23', 
             'Zero30']
+TTLState = [1,1,0,0,1,1,1,1,
+            0,0,0,0,0,0,0,0,
+            1,1,1,1,1,1,1,1,
+            0,0,0,0,0,0,0,0
+            ]# 1为output,0为input
 #DDS.List = ['Zero01', 'Operate_dds_00']
 for i in range(len(DDS.List)):
     name = DDS.List[i]
@@ -48,9 +53,9 @@ for i in range(len(DDS.List)):
 operate_ttl = 1
 operate_ttl_1 = 2
 operate_ttl_2 = 1
-PMT = 0
+PMT = 3
 
-Seq('Operate_0') | pipumping.on  | repumping.on  | 0
+Seq('Operate_0') | pipumping.on  | repumping.on  | operate_ttl_1 |  0
 Seq('Operate')   | protection.on | cooling.on  | pipumping.on  | repumping.on  | operate_ttl |0
 Seq('Operate_1') | protection.on | cooling.on  | pipumping.on  | operate_ttl_1 | 0
 Seq('Operate_2') | protection.on | cooling.on  | pipumping.on  | operate_ttl_2 | 0
@@ -59,8 +64,8 @@ seq = Seq().Operate(4000)#g
 seq_ttl = Seq().Operate_1(5).Operate_2(100)
 
 with Seq('Detection'):
-    protection.on | cooling.on | PMT |  0
-    protection.on | pipumping.on | repumping.on | 0
+    protection.on | cooling.on | PMT | 0
+    protection.on | pipumping.on | repumping.on |-1 | 0
     
 # seq_cooling = Seq().Operate(4000).Detection(10000,10).Operate_0(4000)
 # data = sequencer.scan(seq_cooling,cooling.on.a,(0,0.025,0.005),"C0",100,repeats = 50)

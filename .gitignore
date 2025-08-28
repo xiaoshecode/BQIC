@@ -1,7 +1,32 @@
-/.vscode
-compiler/__pycache__
-compiler/*.hex
-compiler/*.s
-compiler/*.mem
-Assemblerv1.1/vivado_projectv1.1
-/UI/vue_project3/node_modules
+# Python 编译缓存
+**/__pycache__/
+**/*.pyc
+
+# VSCode 配置
+.vscode/
+
+# node_modules（前端依赖）
+UI/vue_project3/node_modules/
+
+# 输出/中间文件
+# CompilerDev/Output/
+CompilerDev/Assembler/*.hex
+CompilerDev/Assembler/*.mem
+CompilerDev/Assembler/*.s
+
+# 日志和临时文件
+*.log
+*.tmp
+*.bak
+
+# DLL/二进制依赖
+# CompilerDev/PXIEInterfaceAPI/*.dll
+
+# Jupyter Notebook 检查点
+**/.ipynb_checkpoints/
+
+# 其他文档和大文件
+# HardwareDesign/*.pdf
+
+# 其他可选
+# UI/readme.txt

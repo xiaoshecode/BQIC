@@ -1,0 +1,1 @@
+npm i chart.js chartjs-plugin-datalabels chartjs-plugin-zoom

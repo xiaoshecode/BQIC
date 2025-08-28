@@ -4,3 +4,4 @@ compiler/*.hex
 compiler/*.s
 compiler/*.mem
 Assemblerv1.1/vivado_projectv1.1
+/UI/vue_project3/node_modules

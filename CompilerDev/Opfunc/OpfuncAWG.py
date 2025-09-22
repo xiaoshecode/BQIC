@@ -46,7 +46,7 @@ class OpfuncAWG(OpfuncRF):  # 这里针对Bell设备的AWG完成Amp、phase、fr
 
     def gen_assembler_PHASE(self):
         u0_bin = int(self.u0 * 2**24)  # part2 p0 = K/2^24,p=[0,1]
-        u1_bin = int(self.u1 * 2**24) 
+        u1_bin = int(self.u1 * 2**24)
         u2_bin = int(self.u2 * 2**24)
         u3_bin = int(self.u3 * 2**24)
 
@@ -55,13 +55,18 @@ class OpfuncAWG(OpfuncRF):  # 这里针对Bell设备的AWG完成Amp、phase、fr
         v2_bin = u2_bin + u3_bin
         v3_bin = u3_bin
 
-        full_128bin = (int(v3_bin) << 96) | (int(v2_bin) << 64) | (int(v1_bin) << 32) | int(v0_bin)
+        full_128bin = (
+            (int(v3_bin) << 96)
+            | (int(v2_bin) << 64)
+            | (int(v1_bin) << 32)
+            | int(v0_bin)
+        )
 
         self.array_128bit.append(full_128bin)
         self.array_32bit.append(self.Delay)
-    
+
     def gen_assembler_FREQ(self):
-        u0_bin = int(self.u0 * 2**24 / 250) # part1 f0 = K/2^24 * Fclk
+        u0_bin = int(self.u0 * 2**24 / 250)  # part1 f0 = K/2^24 * Fclk
         u1_bin = int(self.u1 * 2**24 / 250)
         u2_bin = int(self.u2 * 2**24 / 250)
         u3_bin = int(self.u3 * 2**24 / 250)
@@ -71,7 +76,12 @@ class OpfuncAWG(OpfuncRF):  # 这里针对Bell设备的AWG完成Amp、phase、fr
         v2_bin = u2_bin + u3_bin
         v3_bin = u3_bin
 
-        full_128bin = (int(v3_bin) << 96) | (int(v2_bin) << 64) | (int(v1_bin) << 32) | int(v0_bin)
+        full_128bin = (
+            (int(v3_bin) << 96)
+            | (int(v2_bin) << 64)
+            | (int(v1_bin) << 32)
+            | int(v0_bin)
+        )
 
         self.array_128bit.append(full_128bin)
         self.array_32bit.append(self.Delay)

@@ -1,0 +1,94 @@
+{
+    "channel0": {
+        "0": {
+            "amplitude": 0.08,
+            "frequency": 240.0086,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0.08,
+            "frequency": 240.0086,
+            "phase": 0.5,
+            "output": true
+        },
+        "2": {
+            "amplitude": 0.08,
+            "frequency": 240.0086,
+            "phase": 0.5,
+            "output": true
+        },
+        "3": {
+            "amplitude": 0.0,
+            "frequency": 240.0086,
+            "phase": 0.5,
+            "output": true
+        }
+    },
+    "channel1": {
+        "0": {
+            "amplitude": 0.22,
+            "frequency": 130,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0.22,
+            "frequency": 135,
+            "phase": 0,
+            "output": true
+        },
+        "2": {
+            "amplitude": 0.17,
+            "frequency": 137,
+            "phase": 0,
+            "output": true
+        },
+        "3": {
+            "amplitude": 0.22,
+            "frequency": 130,
+            "phase": 0.0,
+            "output": true
+        }
+    },
+    "channel2": {
+        "0": {
+            "amplitude": 0.25,
+            "frequency": 203.8,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0.25,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        }
+    },
+    "channel3": {
+        "0": {
+            "amplitude": 0.46,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        },
+        "2": {
+            "amplitude": 0.0,
+            "frequency": 237.0622,
+            "phase": 0,
+            "output": true
+        },
+        "3": {
+            "amplitude": 0.0,
+            "frequency": 235.80200000000002,
+            "phase": 0.0,
+            "output": true
+        }
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "channel0": {
+        "0": {
+            "amplitude": 0.35,
+            "frequency": 240.0086,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0.15,
+            "frequency": 240.0086,
+            "phase": 0.5,
+            "output": true
+        },
+        "2": {
+            "amplitude": 0.15,
+            "frequency": 240.0086,
+            "phase": 0.5,
+            "output": true
+        }
+    },
+    "channel1": {
+        "0": {
+            "amplitude": 0.4,
+            "frequency": 130,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0.4,
+            "frequency": 135,
+            "phase": 0,
+            "output": true
+        },
+        "2": {
+            "amplitude": 0.3,
+            "frequency": 137,
+            "phase": 0,
+            "output": true
+        },
+        "3": {
+            "amplitude": 0.1,
+            "frequency": 130,
+            "phase": 0.0,
+            "output": true
+        }
+    },
+    "channel2": {
+        "0": {
+            "amplitude": 0.47,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0.47,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        }
+    },
+    "channel3": {
+        "0": {
+            "amplitude": 0.88,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        },
+        "1": {
+            "amplitude": 0,
+            "frequency": 200,
+            "phase": 0,
+            "output": true
+        },
+        "2": {
+            "amplitude": 0.0,
+            "frequency": 237.0622,
+            "phase": 0,
+            "output": true
+        },
+        "3": {
+            "amplitude": 0.0,
+            "frequency": 235.80200000000002,
+            "phase": 0.0,
+            "output": true
+        }
+    }
+}

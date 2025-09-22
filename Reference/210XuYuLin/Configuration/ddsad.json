@@ -1,0 +1,94 @@
+{
+    "channel0": {
+        "7": {
+            "amplitude": 0.078,
+            "frequency": 200,
+            "phase": 0,
+            "output": 1
+        },
+        "6": {
+            "amplitude": 0.14,
+            "frequency": 200,
+            "phase": 0,
+            "output": 1
+        }
+    },
+    "channel1": {
+        "4": {
+            "amplitude": 1,
+            "frequency": 83.9,
+            "phase": 180,
+            "output": 1
+        },
+        "3": {
+            "amplitude": 1,
+            "frequency": 83.9,
+            "phase": 0,
+            "output": 1
+        },
+        "2": {
+            "amplitude": 1,
+            "frequency": 83.9,
+            "phase": 0,
+            "output": 1
+        },
+        "1": {
+            "amplitude": 0,
+            "frequency": 83.9,
+            "phase": 0,
+            "output": 1
+        },
+        "0": {
+            "amplitude": 1,
+            "frequency": 83.9,
+            "phase": 0,
+            "output": 1
+        }
+    },
+    "channel2": {
+        "7": {
+            "amplitude": 0.0,
+            "frequency": 226.1986,
+            "phase": 0,
+            "output": 1
+        },
+        "6": {
+            "amplitude": 0.2,
+            "frequency": 226.1986,
+            "phase": 0,
+            "output": 1
+        },
+        "5": {
+            "amplitude": 0.2,
+            "frequency": 215.8065,
+            "phase": 0,
+            "output": 1
+        },
+        "4": {
+            "amplitude": 0.246,
+            "frequency": 221.009,
+            "phase": 0,
+            "output": 1
+        }
+    },
+    "channel3": {
+        "4": {
+            "amplitude": 1,
+            "frequency": 240,
+            "phase": 0,
+            "output": 1
+        },
+        "5": {
+            "amplitude": 0,
+            "frequency": 240,
+            "phase": 0,
+            "output": 1
+        },
+        "6": {
+            "amplitude": 1,
+            "frequency": 240,
+            "phase": 0,
+            "output": 1
+        }
+    }
+}

@@ -1,0 +1,266 @@
+{
+    "TTL0": {
+        "DeviceID": "0",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL1": {
+        "DeviceID": "1",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL2": {
+        "DeviceID": "2",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL3": {
+        "DeviceID": "3",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL4": {
+        "DeviceID": "4",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL5": {
+        "DeviceID": "5",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL6": {
+        "DeviceID": "6",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL7": {
+        "DeviceID": "7",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL8": {
+        "DeviceID": "8",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL9": {
+        "DeviceID": "9",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL10": {
+        "DeviceID": "10",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL11": {
+        "DeviceID": "11",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL12": {
+        "DeviceID": "12",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL13": {
+        "DeviceID": "13",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL14": {
+        "DeviceID": "14",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL15": {
+        "DeviceID": "15",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL16": {
+        "DeviceID": "16",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL17": {
+        "DeviceID": "17",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL18": {
+        "DeviceID": "18",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL19": {
+        "DeviceID": "19",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL20": {
+        "DeviceID": "20",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL21": {
+        "DeviceID": "21",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL22": {
+        "DeviceID": "22",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL23": {
+        "DeviceID": "23",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL24": {
+        "DeviceID": "24",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL25": {
+        "DeviceID": "25",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL26": {
+        "DeviceID": "26",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL27": {
+        "DeviceID": "27",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL28": {
+        "DeviceID": "28",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL29": {
+        "DeviceID": "29",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL30": {
+        "DeviceID": "30",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL31": {
+        "DeviceID": "31",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    },
+    "TTL32": {
+        "DeviceID": "32",
+        "DeviceType": "TTL",
+        "Name": "",
+        "Mode": "Output",
+        "Output":[],
+        "Input":[]
+    }
+}

@@ -1,0 +1,282 @@
+{   "timedef":[
+        "Laser411i1",
+        "Laser411i2",
+        "Microwave"
+    ],
+    "code": {
+        "Laser3432": 259,
+        "Laser3432976": 323,
+        "Frepump": 320,
+        "Laser411i1": 35,
+        "Laser411i2": 4099,
+        "Laser411p1": 547,
+        "Laser411-2": 1059,
+        "Laser411-3": 1571,
+        "Laser411-4": 2083,
+        "Laser4113432": 291,
+        "Laser976": 67,
+        "Microwave": 19,
+        "SBCrepump": 333,
+        "cooling": 0,
+        "detectioncooling": 0,
+        "detection": 5,
+        "ccddet": 5,
+        "detectionfree": 3,
+        "free": 3,
+        "idle": 0,
+        "pumping": 13,
+        "test-ch1": 1,
+        "test-ch12": 2048,
+        "test-ch2": 2,
+        "test-ch3": 4,
+        "test-ch4": 8,
+        "test-ch5": 16,
+        "test-ch6": 32,
+        "testch14": 8192,
+        "CCD": 2053
+    },
+    "spellCombo": {
+        "Cooling": [
+            "detectioncooling(1000)"
+        ],
+        "Pumping": [
+            "cooling(2000)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "detection(400)"
+        ],
+        "detection": [
+            "cooling(2000)",
+            "free(1)",
+            "detection(400)"
+        ],
+        "trapfreq": [
+            "cooling(5000)",
+            "testch14(500)",
+            "detection(400)"
+        ],
+        "MW": [
+            "cooling(2000)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "*Microwave(50)",
+            "free(1)",
+            "detection(400)"
+        ],
+        "MWRamsey": [
+            "cooling(2000)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Microwave(0.5)",
+            "*free(10)",
+            "Microwave(0.5)",
+            "free(1)",
+            "detection(400)"
+        ],
+        "370PumingTimeScan": [
+            "cooling(2000)",
+            "free(1)",
+            "*pumping(5)",
+            "free(1)",
+            "detection(400)"
+        ],
+        "CCDcooling": [
+            "cooling(4000)",
+            "free(1)",
+            "CCD(155)",
+            "cooling(1000)",
+            "detectionfree(200)"
+        ],
+        "CCDdetection": [
+            "cooling(4500)",
+            "free(1)",
+            "CCD(155)",
+            "ccddet(1000)",
+            "detectionfree(200)"
+        ],
+        "CCDpumping": [
+            "cooling(4500)",
+            "free(1)",
+            "pumping(20)",
+            "CCD(155)",
+            "ccddet(1000)",
+            "detectionfree(200)"
+        ],
+        "CCDMW": [
+            "cooling(4500)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "*Microwave(68)",
+            "CCD(155)",
+            "ccddet(1000)",
+            "detectionfree(200)"
+        ],
+        "CCDMWramsey": [
+            "cooling(4500)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Microwave(15.5)",
+            "*free(1)",
+            "Microwave(15.5)",
+            "CCD(155)",
+            "ccddet(1000)",
+            "detectionfree(200)"
+        ],
+        "411Rabii1": [
+            "Frepump(1000)",
+            "cooling(1000)",
+            "free(1)",
+            "pumping(10)",
+            "free(1)",
+            "*Laser411i1(5)",
+            "cooling(500)",
+            "free(1)",
+            "detectioncooling(400)"
+        ],
+        "411i1": [
+            "Frepump(1000)",
+            "cooling(1000)",
+            "free(1)",
+            "pumping(10)",
+            "free(1)",
+            "Laser411i1(5)",
+            "cooling(500)",
+            "free(1)",
+            "detectioncooling(400)"
+        ],
+        "411Rabii2": [
+            "Frepump(1000)",
+            "cooling(1000)",
+            "free(1)",
+            "pumping(10)",
+            "free(1)",
+            "*Laser411i2(5)",
+            "cooling(500)",
+            "free(1)",
+            "detectioncooling(400)"
+        ],
+        "CCD411Rabii1": [
+            "Frepump(4000)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "*Laser411i1(5)",
+            "cooling(500)",
+            "CCD(155)",
+            "cooling(1000)",
+            "detectionfree(200)"
+        ],
+        "CCD411Rabii2": [
+            "Frepump(4000)",
+            "free(1)",
+            "pumping(10)",
+            "free(1)",
+            "*Laser411i2(5)",
+            "cooling(500)",
+            "CCD(155)",
+            "cooling(1000)",
+            "detectionfree(200)"
+        ],
+        "CCD411i1": [
+            "Frepump(4500)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Laser411i1(5)",
+            "cooling(500)",
+            "CCD(155)",
+            "cooling(1000)",
+            "detectionfree(200)"
+        ],
+        "CCD411i2": [
+            "Frepump(4500)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Laser411i2(5)",
+            "cooling(500)",
+            "CCD(155)",
+            "cooling(1000)",
+            "detectionfree(200)"
+        ],
+        "CCD3432976repump": [
+            "Frepump(5000)",
+            "CCD(155)",
+            "cooling(1000)",
+            "detectionfree(200)"
+        ],
+        "3432976repump": [
+            "Frepump(2000)",
+            "detectioncooling(1000)"
+        ],
+        "PMT411i1ACS": [
+            "Frepump(2000)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Microwave(15)",
+            "free(1)",
+            "*Laser411i1(20)",
+            "free(1)",
+            "Microwave(15)",
+            "detection(400)"
+        ],
+        "411i1ACS": [
+            "Frepump(4500)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Microwave(0.5)",
+            "free(1)",
+            "*Laser411i1(15)",
+            "free(1)",
+            "Microwave(0.5)",
+            "CCD(155)",
+            "ccddet(1000)",
+            "detectionfree(200)"
+        ],
+        "PMT411i2ACS": [
+            "Frepump(2000)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Microwave(0.5)",
+            "free(1)",
+            "*Laser411i2(700)",
+            "free(1)",
+            "Microwave(0.5)",
+            "detection(400)"
+        ],
+        "411i2ACS": [
+            "Frepump(4500)",
+            "free(1)",
+            "pumping(20)",
+            "free(1)",
+            "Microwave(0.5)",
+            "free(1)",
+            "*Laser411i2(20)",
+            "free(1)",
+            "Microwave(0.5)",
+            "CCD(155)",
+            "ccddet(1000)",
+            "detectionfree(200)"
+        ]
+    },
+    "switch": [
+        "370 AOM Swicth",
+        "370 AOM Profile",
+        "14.7G EOM",
+        "2.1G EOM",
+        "Protection Switch",
+        "935 AOM Switch",
+        "935 EOM Switch",
+        "435 AOM Switch",
+        "435 SB1",
+        "435 SB2"
+    ]
+}
